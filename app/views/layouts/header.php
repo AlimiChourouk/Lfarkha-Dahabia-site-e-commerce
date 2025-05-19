@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <style>
-        /* Réinitialisation des styles par défaut pour tous les éléments */
+        
 * {
     margin: 0; /* Supprime les marges par défaut */
     padding: 0; /* Supprime les paddings par défaut */
