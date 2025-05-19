@@ -1,0 +1,350 @@
+<?php 
+require '../config/db.php';
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Lfarkha-Dahabia-site-e-commerce/public/css/style.css?v=<?= time(); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Site de commerce</title>
+</head>
+<body>
+    <header>
+        <!-- Menu de navigation principal -->
+        <nav class="menu">
+            <a href="index.php">Accueil</a>
+            <a href="?rout=panier">Panier</a>
+        </nav>
+        <!-- Menu déroulant pour les catégories -->
+        <nav class="dropdown">
+            <p class="dropdown-btn">Catégorie</p>     
+            <div class="dropdown-content">
+                <a href="#">Poules</a>
+                <a href="#">Coqs</a>
+                <a href="#">Poussins</a>
+                <a href="#">Œufs</a>
+            </div>
+        </nav>
+        <!-- Barre de recherche avec icône -->
+        <div class="search-container">
+            <input type="text" id="search" placeholder="Recherche">
+            <img class="Icon" src="img/cherche.png" alt="Search Icon">
+        </div>
+        <!-- Logo du site -->
+         <div id="logoCustom-container">
+        <img id="logoimg" src="img/logo.png" alt="logo">
+        <!-- Conteneur pour le texte personnalisé du site -->
+        <div class="custom-container">
+            <span class="custom-text-1">Lfarkha</span>
+            <span class="custom-text-2">Dahabia</span>
+        </div>
+        </div>
+        <a href="#">à propos</a>
+        <a href="#">contact</a>
+        <!-- Inclut Font Awesome pour les icônes -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<!-- Gestion de l'affichage selon l'état de connexion de l'utilisateur -->
+    <div class="relative inline-block text-left" style="display: flex; align-items: center; gap: 15px;">
+    <!-- Icône de panier -->
+    <a href="?rout=panier" class="cart-icon" title="Voir le panier" style="color: #333; font-size: 22px;">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+
+ 
+
+    <?php if (isset($_SESSION['idUtilisateur']) && !empty($_SESSION['idUtilisateur'])): ?>
+        <!-- Bouton pour afficher/masquer le menu utilisateur si connecté -->
+        <button onclick="toggleUserMenu()" class="text-gray-600 hover:text-black focus:outline-none" style="background: none; border: none;">
+            <i class="fas fa-user-circle text-2xl"></i>
+        </button>
+
+        <!-- Menu déroulant pour les informations utilisateur -->
+        <div id="userMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+            <div class="px-4 py-3 text-sm text-gray-700">
+                <p><strong>Nom :</strong> <?= htmlspecialchars($_SESSION['nomUtil'] ?? 'Inconnu') ?></p>
+                <p><strong>Email :</strong> <?= htmlspecialchars($_SESSION['emailUtil'] ?? '---') ?></p>
+                <p><strong>Numéro :</strong> <?= htmlspecialchars($_SESSION['telUtil']) ?></p>
+            </div>
+            <div class="border-t px-4 py-2">
+                <a href="deconnexion.php" class="block text-red-600 hover:text-red-800">Déconnexion</a>
+            </div>
+        </div>
+    <?php else: ?>
+        <!-- Liens pour connexion/inscription si l'utilisateur n'est pas connecté -->
+        <a href="?route=connexion" class="text-blue-600 hover:underline mr-2">Connexion</a>
+        <a href="?route=inscription" class="text-blue-600 hover:underline">Inscription</a>
+    <?php endif; ?>
+</div>
+
+    </header> 
+
+    <!-- Affiche un message de succès si présent dans l'URL -->
+    <?php if (isset($_GET['success'])): ?>
+        <p style="color: green;"><?= htmlspecialchars($_GET['success']) ?></p>
+    <?php endif; ?>
+
+    <!-- Affiche un message d'erreur si présent dans l'URL -->
+    <?php if (isset($_GET['error'])): ?>
+        <p style="color: red;"><?= htmlspecialchars($_GET['error']) ?></p>
+    <?php endif; ?>
+
+    <!-- Section Hero pour la présentation principale -->
+    <section class="hero-section">
+        <!-- Image de fond avec superposition -->
+        <div class="bg-image">
+            <img src="img/hero.png.png" alt="Poulets fermiers" />
+        </div>
+
+        <div class="container">
+            <div class="flex flex-col items-start max-w-xl">
+                <!-- Titre principal -->
+                <h1>Qualité 100% Naturelle Garantie</h1>
+                <!-- Description -->
+                <p>
+                    Chez Lfarkha Dahabia, nous sommes engagés à vous fournir des produits avicoles de la plus haute qualité, 
+                    élevés naturellement et dans le respect du bien-être animal.
+                </p>
+                <!-- Boutons d'appel à l'action -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="chicken.php" class="btn btn-primary">Découvrir nos produits</a>
+                    <a href="/about" class="btn btn-secondary">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Points forts des services -->
+        <div class="service-highlights">
+            <div class="container">
+                <div class="flex">
+                    <div class="service-item">
+                        <h3>Livraison Rapide</h3>
+                        <p>Livraison à domicile dans les 24 heures suivant votre commande</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Garantie Fraîcheur</h3>
+                        <p>Tous nos produits sont garantis frais, ou remboursés</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>Support Client</h3>
+                        <p>Notre équipe est disponible 7j/7 pour répondre à vos questions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section des produits -->
+    <section id="section1">
+    <h2>Nos Produits</h2>
+
+    <!-- Affichage des messages de succès ou d'erreur -->
+    <?php if (isset($_SESSION['success_message'])): ?>
+        <div class="alert alert-success">
+            <?= htmlspecialchars($_SESSION['success_message']) ?>
+        </div>
+        <?php unset($_SESSION['success_message']); ?>
+    <?php endif; ?>
+    <?php if (isset($_SESSION['error_message'])): ?>
+        <div class="alert alert-danger">
+            <?= htmlspecialchars($_SESSION['error_message']) ?>
+        </div>
+        <?php unset($_SESSION['error_message']); ?>
+    <?php endif; ?>
+
+    <div class="produits-container">
+        <?php
+        try {
+            // Gestion de la pagination
+            $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
+            $itemsPerPage = 12;
+            $offset = ($page - 1) * $itemsPerPage;
+
+            // Requête SQL pour récupérer les produits avec limite et offset
+            $query = "SELECT idProduit, nomProduit, age, prix, imgProduit, quantiteStock 
+                      FROM produit 
+                      LIMIT :limit OFFSET :offset";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':limit', $itemsPerPage, PDO::PARAM_INT);
+            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $stmt->execute();
+            $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la récupération des produits : " . $e->getMessage());
+            echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer plus tard.</p>";
+            $produits = [];
+        }
+
+        // Vérifie si des produits sont disponibles
+        if (empty($produits)) {
+            echo "<p>Aucun produit disponible pour le moment.</p>";
+        } else {
+            // Boucle sur chaque produit pour l'afficher
+            foreach ($produits as $produit):
+        ?>
+                <div class="product-card">
+                    <!-- Image du produit avec chargement paresseux -->
+                    <img src="<?= htmlspecialchars($produit['imgProduit']) ?>" 
+                         alt="<?= htmlspecialchars($produit['nomProduit']) ?>" 
+                         loading="lazy">
+
+                    <!-- Bouton pour ajouter aux favoris -->
+                    <div class="top-actions">
+                        <button class="heart-btn" 
+                                aria-label="Ajouter aux favoris"
+                                data-product-id="<?= $produit['idProduit'] ?>">
+                            <svg class="heart-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Informations du produit -->
+                    <div class="product-info">
+                        <h3><?= htmlspecialchars($produit['nomProduit']) ?></h3>
+                        <p>Âge: <?= htmlspecialchars($produit['age']) ?> mois</p>
+                        <p>Stock: <?= htmlspecialchars($produit['quantiteStock']) ?></p>
+                        <div class="price-and-actions">
+                            <div class="product-price"><?= htmlspecialchars($produit['prix']) ?> DH</div>
+                            <div class="product-actions">
+                                <?php if ($produit['quantiteStock'] > 0): ?>
+                                    <?php if (isset($_SESSION['idUtilisateur']) && !empty($_SESSION['idUtilisateur'])): ?>
+                                        <!-- Formulaire pour ajouter au panier si connecté -->
+                                        <form method="POST" action="<?= BASE_URL ?>?rout=panier/ajouter" style="display: inline;">
+                                            <input type="hidden" name="idProduit" value="<?= $produit['idProduit'] ?>">
+                                            <button type="submit" class="cart-btn" aria-label="Ajouter au panier">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <circle cx="9" cy="21" r="1"></circle>
+                                                    <circle cx="20" cy="21" r="1"></circle>
+                                                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    <?php else: ?>
+                                        <!-- Redirection vers la page de connexion si non connecté -->
+                                        <a class="cart-btn" href="<?= BASE_URL ?>?rout=connexion" aria-label="Connexion pour ajouter au panier">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="9" cy="21" r="1"></circle>
+                                                <circle cx="20" cy="21" r="1"></circle>
+                                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                                            </svg>
+                                        </a>
+                                    <?php endif; ?>
+                                    <!-- Bouton pour voir les détails du produit -->
+                                    <a href="<?= BASE_URL ?>?rout=produit/details&idProduit=<?= $produit['idProduit'] ?>" class="info-btn" aria-label="Voir les détails du produit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                                            <line x1="12" y1="8" x2="12" y2="8"></line>
+                                        </svg>
+                                    </a>
+                                <?php else: ?>
+                                    <!-- Message si le produit est en rupture de stock -->
+                                    <span class="out-of-stock">Rupture de stock</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; } ?>
+        </div>
+</section>
+
+<!-- CSS pour les alertes -->
+
+        <!-- Pagination -->
+        <?php
+        // Compte le nombre total de produits pour la pagination
+        $totalQuery = "SELECT COUNT(*) FROM Produit";
+        $totalStmt = $pdo->query($totalQuery);
+        $totalProducts = $totalStmt->fetchColumn();
+        $totalPages = ceil($totalProducts / $itemsPerPage);
+
+        // Affiche les liens de pagination si nécessaire
+        if ($totalPages > 1): ?>
+            <div class="pagination">
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <a href="?page=<?= $i ?>" class="<?= $page == $i ? 'active' : '' ?>"><?= $i ?></a>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
+    </section>
+
+    <!-- Section sur l'engagement qualité -->
+    <section class="qualite-section">
+        <div class="container">
+            <div class="image-container">
+                <!-- Image illustrant la qualité -->
+                <img 
+                    src="https://images.pexels.com/photos/7626303/pexels-photo-7626303.jpeg" 
+                    alt="Ferme avicole de qualité"
+                    class="qualite-image"
+                />
+            </div>
+            <div class="content-container">
+                <h2>Notre Engagement Qualité</h2>
+                <p>
+                    Chez Lfarkha Dahabia, nous sommes fiers de vous proposer des produits avicoles 
+                    de la plus haute qualité. Nos volailles sont élevées avec soin, dans des 
+                    conditions respectueuses et naturelles.
+                </p>
+                <!-- Liste des engagements -->
+                <ul>
+                    <li>
+                        <span class="icon">✓</span>
+                        <span><strong>Alimentation 100% naturelle</strong> - Sans OGM, cultivée localement.</span>
+                    </li>
+                    <li>
+                        <span class="icon">✓</span>
+                        <span><strong>Élevage en plein air</strong> - Liberté de mouvement assurée.</span>
+                    </li>
+                    <li>
+                        <span class="icon">✓</span>
+                        <span><strong>Sans antibiotiques</strong> - Soins naturels uniquement.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Lfarkha Dahabia</h3>
+                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="panier.php">Panier</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="inscription.php">Inscription</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contactez-nous</h3>
+                <p>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
+                <p>Téléphone : +212 123 456 789</p>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-nous</h3>
+                <!-- Liens vers les réseaux sociaux -->
+                <div class="social-links">
+                    <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                </div>
+            </div>
+        </div>
+        <!-- Mention légale avec année dynamique -->
+        <div class="footer-bottom">
+            <p>© <?php echo date('Y'); ?> Lfarkha Dahabia. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- Inclut le fichier JavaScript pour les interactions dynamiques -->
+    <script src="../public/scripte.js"></script>
+</body>
+</html>
