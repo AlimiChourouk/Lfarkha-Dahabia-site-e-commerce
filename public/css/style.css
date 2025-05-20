@@ -1,0 +1,1466 @@
+/* Réinitialisation des styles par défaut pour tous les éléments */
+* {
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 0; /* Supprime les paddings par défaut */
+    box-sizing: border-box; /* Inclut padding et bordure dans la taille totale */
+    font-family: 'Montserrat', 'Poppins', sans-serif; /* Police moderne et élégante */
+}
+
+/* Définition des variables CSS pour une gestion centralisée des couleurs et styles */
+:root {
+    --primary: #4CAF50;/* Couleur principale (vert) */
+    --primary-light: #80c883; /* Vert clair pour survols et bordures */
+    --primary-dark: #3b8a3f; /* Vert foncé pour états actifs */
+    --accent: #FFC107; /* Couleur d'accentuation (jaune/orange) */
+    --text-dark: #212121; /* Texte sombre pour lisibilité */
+    --text-medium: #757575; /* Texte gris pour éléments secondaires */
+    --text-light: #FFFFFF; /* Texte blanc pour fonds sombres */
+    --background: #F9F9F9; /* Fond clair pour le corps */
+    --card-bg: #FFFFFF; /* Fond blanc pour cartes et sections */
+    --border-light: #EEEEEE; /* Bordure claire pour séparations */
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Ombre douce pour profondeur */
+    --radius: 12px; /* Rayon de bordure pour coins arrondis */
+    --transition: all 0.3s ease; /* Transition fluide pour interactions */
+}
+
+/* Styles de base pour le corps de la page */
+body {
+    background-color: var(--background); /* Fond clair pour contraste */
+    min-height: 100vh; /* Assure que le corps couvre toute la hauteur de la vue */
+    font-size: 16px; /* Taille de police par défaut */
+    color: var(--text-dark); /* Couleur de texte principale */
+    line-height: 1.5; /* Espacement des lignes pour lisibilité */
+}
+
+/* Styles pour l'en-tête - Design moderne et minimaliste */
+header {
+    display: flex; /* Disposition en ligne pour aligner les éléments */
+    justify-content: space-between; /* Espace les éléments uniformément */
+    align-items: center; /* Centre verticalement */
+    background-color: var(--card-bg); /* Fond blanc pour propreté */
+    padding: 1.2rem 5%; /* Espacement interne généreux */
+    position: sticky; /* Fixe l'en-tête en haut lors du défilement */
+    top: 0; /* Colle au sommet */
+    z-index: 1000; /* Priorité d'affichage */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Ombre subtile */
+}
+#logoCustom-container{
+  display: flex;
+  align-items: center;
+
+}
+/* Styles pour le conteneur du texte du logo */
+.custom-container {
+    margin-left: 0.5rem; /* Petite marge à gauche */
+    font-weight: bold; /* Texte en gras pour importance */
+    font-size: 20px;
+    letter-spacing: 0.05em; /* Espacement des lettres pour élégance */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); /* Ombre portée légère */
+    transition: all 0.3s ease-in-out; /* Transition fluide pour interactions */
+}
+
+/* Style pour le premier texte du logo (Lfarkha) */
+.custom-text-1 {
+    background: linear-gradient(to right, #f59e0b, #d97706, #b45309); /* Dégradé ambré */
+    background-clip: text; /* Applique le dégradé au texte */
+    color: transparent; /* Rend le texte transparent pour montrer le dégradé */
+    transition: all 0.3s ease-in-out; /* Transition pour survol */
+}
+
+/* Style pour le second texte du logo (Dahabia) */
+.custom-text-2 {
+    background: linear-gradient(to right, #d97706, #fbbf24, #f59e0b); /* Dégradé ambré/jaune */
+    background-clip: text; /* Applique le dégradé au texte */
+    color: transparent; /* Rend le texte transparent pour le dégradé */
+    margin-left: 0.25rem; /* Petite marge à gauche */
+    transition: all 0.3s ease-in-out; /* Transition pour survol */
+}
+
+/* Effet au survol pour le premier texte */
+.custom-container:hover .custom-text-1 {
+    color: #b45309; /* Couleur ambrée foncée au survol */
+}
+
+/* Effet au survol pour le second texte */
+.custom-container:hover .custom-text-2 {
+    color: #eab308; /* Couleur jaune clair au survol */
+}
+
+/* Style pour l'image du logo */
+#logoimg {
+    width: 55px; /* Taille fixe pour le logo */
+    height: 55px; /* Hauteur fixe */
+    object-fit: contain; /* Ajuste l'image sans déformation */
+}
+
+/* Style pour les paragraphes dans l'en-tête */
+header p {
+    color: var(--text-dark); /* Texte sombre pour contraste */
+    font-size: 1.3rem; /* Taille de police légèrement plus grande */
+    font-weight: 700; /* Gras pour importance */
+    letter-spacing: -0.5px; /* Resserre légèrement les lettres */
+}
+
+/* Style pour le menu de navigation principal */
+.menu {
+    display: flex; /* Affiche les liens en ligne */
+    gap: 2rem; /* Espacement entre les liens */
+}
+
+/* Style pour les liens du menu */
+.menu a {
+    color: var(--text-medium); /* Couleur grise pour neutralité */
+    text-decoration: none; /* Supprime le soulignement */
+    font-size: 0.95rem; /* Taille de police légèrement réduite */
+    font-weight: 500; /* Poids moyen pour lisibilité */
+    position: relative; /* Permet de positionner l'effet de survol */
+    transition: var(--transition); /* Transition fluide pour changements */
+}
+
+/* Effet au survol des liens du menu */
+.menu a:hover {
+    color: var(--primary); /* Passe au vert principal */
+}
+
+/* Pseudo-élément pour l'effet de soulignement au survol */
+.menu a::after {
+    content: ''; /* Crée un élément vide */
+    position: absolute; /* Positionnement relatif au lien */
+    bottom: -5px; /* Sous le lien */
+    left: 0; /* Aligné à gauche */
+    width: 0; /* Largeur initiale nulle */
+    height: 2px; /* Hauteur de la ligne */
+    background-color: var(--primary); /* Couleur verte */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Étend la ligne au survol */
+.menu a:hover::after {
+    width: 100%; /* Ligne complète */
+}
+
+/* Style pour le menu déroulant */
+.dropdown {
+    position: relative; /* Permet de positionner le contenu déroulant */
+}
+
+/* Style pour le bouton du menu déroulant */
+.dropdown-btn {
+    color: var(--text-medium); /* Couleur grise */
+    cursor: pointer; /* Curseur indiquant interactivité */
+    font-size: 0.95rem; /* Taille de police réduite */
+    font-weight: 500; /* Poids moyen */
+    transition: var(--transition); /* Transition fluide */
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    gap: 5px; /* Espacement entre texte et icône */
+}
+
+/* Ajoute une flèche au bouton déroulant */
+.dropdown-btn::after {
+    content: '▾'; /* Symbole de flèche vers le bas */
+    font-size: 0.8rem; /* Taille réduite */
+}
+
+/* Effet au survol du bouton déroulant */
+.dropdown-btn:hover {
+    color: var(--primary); /* Passe au vert */
+}
+
+/* Style pour le contenu du menu déroulant */
+.dropdown-content {
+    display: none; /* Caché par défaut */
+    position: absolute; /* Positionnement absolu */
+    top: 130%; /* Décalé vers le bas */
+    left: 0; /* Aligné à gauche */
+    background-color: var(--card-bg); /* Fond blanc */
+    min-width: 220px; /* Largeur minimale */
+    border-radius: var(--radius); /* Coins arrondis */
+    box-shadow: var(--shadow); /* Ombre pour profondeur */
+    z-index: 1000; /* Priorité d'affichage */
+    overflow: hidden; /* Cache les débordements */
+}
+
+/* Style pour les liens du menu déroulant */
+.dropdown-content a {
+    color: var(--text-medium); /* Couleur grise */
+    padding: 0.9rem 1.5rem; /* Espacement interne */
+    text-decoration: none; /* Sans soulignement */
+    display: block; /* Occupe toute la largeur */
+    transition: var(--transition); /* Transition fluide */
+    font-weight: 500; /* Poids moyen */
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+/* Effet au survol des liens du menu déroulant */
+.dropdown-content a:hover {
+    background-color: var(--border-light); /* Fond gris clair */
+    color: var(--primary); /* Texte vert */
+    padding-left: 1.8rem; /* Décalage à gauche pour effet visuel */
+}
+
+/* Affiche le menu déroulant au survol */
+.dropdown:hover .dropdown-content {
+    display: block; /* Rend visible */
+    animation: fadeInDown 0.3s ease forwards; /* Animation d'apparition */
+}
+
+/* Animation pour l'apparition du menu déroulant */
+@keyframes fadeInDown {
+    from {
+        opacity: 0; /* Débute invisible */
+        transform: translateY(-10px); /* Décalé vers le haut */
+    }
+    to {
+        opacity: 1; /* Complètement visible */
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+/* Style pour la barre de recherche */
+.search-container {
+    display: flex; /* Alignement en ligne */
+    align-items: center; /* Centre verticalement */
+    background-color: var(--border-light); /* Fond gris clair */
+    border-radius: 30px; /* Coins très arrondis */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    max-width: 300px; /* Largeur maximale */
+    width: 100%; /* Pleine largeur dans son conteneur */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Effet au focus de la barre de recherche */
+.search-container:focus-within {
+    box-shadow: 0 0 0 2px var(--primary-light); /* Bordure verte claire */
+}
+
+/* Style pour l'input de recherche */
+.search-container input {
+    border: none; /* Sans bordure */
+    background: none; /* Sans fond */
+    width: 100%; /* Pleine largeur */
+    padding: 0.4rem; /* Espacement interne */
+    outline: none; /* Supprime le contour par défaut */
+    color: var(--text-dark); /* Texte sombre */
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+/* Style pour le placeholder de l'input */
+.search-container input::placeholder {
+    color: var(--text-medium); /* Couleur grise */
+    opacity: 0.7; /* Légèrement transparent */
+}
+
+/* Style pour l'icône de recherche */
+.search-container .Icon {
+    width: 18px; /* Taille réduite */
+    height: 18px; /* Hauteur fixe */
+    opacity: 0.6; /* Légèrement transparent */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Augmente l'opacité de l'icône au focus */
+.search-container:focus-within .Icon {
+    opacity: 1; /* Pleinement visible */
+}
+
+/* Style pour les liens d'authentification */
+header p a {
+    color: var(--text-medium); /* Couleur grise */
+    text-decoration: none; /* Sans soulignement */
+    transition: var(--transition); /* Transition fluide */
+    font-weight: 500; /* Poids moyen */
+    font-size: 0.9rem; /* Taille réduite */
+}
+
+/* Effet au survol des liens d'authentification */
+header p a:hover {
+    color: var(--primary); /* Passe au vert */
+}
+
+/* Style pour la section Hero */
+.hero-section {
+    position: relative; /* Positionnement relatif pour superpositions */
+    background: linear-gradient(to right, #1a3c34, #2f855a); /* Dégradé vert foncé */
+    overflow: hidden; /* Cache les débordements */
+}
+
+/* Style pour l'image de fond de la section Hero */
+.hero-section .bg-image {
+    position: absolute; /* Positionnement absolu */
+    inset: 0; /* Couvre toute la section */
+    z-index: 0; /* En arrière-plan */
+}
+
+/* Style pour l'image de fond */
+.hero-section .bg-image img {
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    object-fit: cover; /* Couvre sans déformation */
+    opacity: 0.4; /* Légèrement transparent */
+}
+
+/* Style pour le conteneur principal de la section Hero */
+.hero-section .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 4rem 1rem; /* Espacement généreux */
+    position: relative; /* Positionnement relatif */
+    z-index: 10; /* Au-dessus de l'image de fond */
+}
+
+/* Style pour le titre principal de la section Hero */
+.hero-section h1 {
+    font-size: 3rem; /* Grande taille pour impact */
+    font-weight: 700; /* Gras pour importance */
+    color: #fff; /* Texte blanc pour contraste */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+    line-height: 1.2; /* Hauteur de ligne réduite */
+}
+
+/* Style pour le texte de description */
+.hero-section p {
+    font-size: 1.125rem; /* Taille légèrement plus grande */
+    color: #e5e7eb; /* Gris clair pour contraste */
+    margin-bottom: 2rem; /* Espacement en bas */
+    max-width: 600px; /* Limite la largeur pour lisibilité */
+}
+
+/* Style pour les boutons de la section Hero */
+.hero-section .btn {
+    display: inline-block; /* Affiche en ligne */
+    font-weight: 600; /* Poids moyen-gras */
+    padding: 0.75rem 1.5rem; /* Espacement interne */
+    border-radius: 0.5rem; /* Coins arrondis */
+    transition: background-color 0.3s, transform 0.2s; /* Transitions fluides */
+    text-decoration: none; /* Sans soulignement */
+}
+
+/* Style pour le bouton principal */
+.hero-section .btn-primary {
+    background-color: #f59e0b; /* Couleur ambrée */
+    color: #fff; /* Texte blanc */
+}
+
+/* Effet au survol du bouton principal */
+.hero-section .btn-primary:hover {
+    background-color: #d97706; /* Ambré plus foncé */
+    transform: translateY(-2px); /* Léger soulèvement */
+}
+
+/* Style pour le bouton secondaire */
+.hero-section .btn-secondary {
+    background-color: #fff; /* Fond blanc */
+    color: #15803d; /* Texte vert foncé */
+}
+
+/* Effet au survol du bouton secondaire */
+.hero-section .btn-secondary:hover {
+    background-color: #f3f4f6; /* Gris très clair */
+    transform: translateY(-2px); /* Léger soulèvement */
+}
+
+/* Style pour la section des points forts des services */
+.service-highlights {
+    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    padding: 2rem 0; /* Espacement vertical */
+    position: relative; /* Positionnement relatif */
+    z-index: 10; /* Au-dessus de l'arrière-plan */
+}
+
+/* Style pour le conteneur des points forts */
+.service-highlights .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+    padding: 0 1rem; /* Espacement horizontal */
+}
+
+/* Style pour la grille des services */
+.service-highlights .grid {
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colonnes responsives */
+    gap: 1.5rem; /* Espacement entre éléments */
+}
+
+/* Style pour les titres des services */
+.service-highlights h3 {
+    font-size: 1.25rem; /* Taille moyenne */
+    font-weight: 700; /* Gras */
+    color: #166534; /* Vert foncé */
+    margin-bottom: 0.5rem; /* Espacement en bas */
+}
+
+/* Style pour les descriptions des services */
+.service-highlights p {
+    font-size: 1rem; /* Taille standard */
+    color: #4b5563; /* Gris moyen */
+}
+
+/* Style pour la section des produits */
+.products-section {
+    padding: 4rem 1rem; /* Espacement généreux */
+    background-color: #fff; /* Fond blanc */
+}
+
+/* Style pour le conteneur des produits */
+.products-section .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+}
+
+/* Style pour le titre de la section produits */
+.products-section h2 {
+    font-size: 2rem; /* Grande taille */
+    font-weight: 700; /* Gras */
+    color: #1f2a44; /* Bleu foncé */
+    margin-bottom: 3rem; /* Espacement en bas */
+    text-align: center; /* Centré */
+}
+
+/* Style pour la grille des produits */
+.products-section .grid {
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colonnes responsives */
+    gap: 1.5rem; /* Espacement entre cartes */
+}
+
+/* Style pour les cartes de produit */
+.products-section .product-card {
+    background-color: #fff; /* Fond blanc */
+    padding: 1.5rem; /* Espacement interne */
+    border-radius: 0.5rem; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: transform 0.3s; /* Transition pour survol */
+}
+
+/* Effet au survol des cartes */
+.products-section .product-card:hover {
+    transform: translateY(-5px); /* Soulèvement */
+}
+
+/* Style pour les images des produits */
+.products-section .product-card img {
+    width: 100%; /* Pleine largeur */
+    height: 12rem; /* Hauteur fixe */
+    object-fit: cover; /* Couvre sans déformation */
+    border-radius: 0.5rem; /* Coins arrondis */
+    margin-bottom: 1rem; /* Espacement en bas */
+}
+
+/* Style pour les titres des produits */
+.products-section .product-card h3 {
+    font-size: 1.25rem; /* Taille moyenne */
+    font-weight: 600; /* Semi-gras */
+    color: #1f2a44; /* Bleu foncé */
+    margin-bottom: 0.5rem; /* Espacement en bas */
+}
+
+/* Style pour les descriptions des produits */
+.products-section .product-card p {
+    font-size: 1rem; /* Taille standard */
+    color: #4b5563; /* Gris moyen */
+    margin-bottom: 0.5rem; /* Espacement en bas */
+}
+
+/* Style pour les boutons des produits */
+.products-section .product-card button {
+    background-color: #16a34a; /* Vert vif */
+    color: #fff; /* Texte blanc */
+    font-weight: 600; /* Semi-gras */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    border: none; /* Sans bordure */
+    border-radius: 0.5rem; /* Coins arrondis */
+    cursor: pointer; /* Curseur interactif */
+    transition: background-color 0.3s; /* Transition fluide */
+    width: 100%; /* Pleine largeur */
+}
+
+/* Effet au survol des boutons */
+.products-section .product-card button:hover {
+    background-color: #15803d; /* Vert plus foncé */
+}
+
+/* Style pour la section Engagement Qualité */
+.quality-section {
+    padding: 4rem 1rem; /* Espacement généreux */
+    background-color: #fff; /* Fond blanc */
+}
+
+/* Style pour le conteneur de la section qualité */
+.quality-section .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+    display: flex; /* Disposition flexible */
+    flex-wrap: wrap; /* Passe à la ligne si nécessaire */
+    align-items: center; /* Centre verticalement */
+    gap: 3rem; /* Espacement entre éléments */
+}
+
+/* Style pour l'image de la section qualité */
+.quality-section .image {
+    flex: 1; /* Occupe l'espace disponible */
+    min-width: 300px; /* Largeur minimale */
+}
+
+/* Style pour l'image elle-même */
+.quality-section .image img {
+    width: 100%; /* Pleine largeur */
+    height: auto; /* Hauteur proportionnelle */
+    border-radius: 0.5rem; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Style pour le contenu textuel */
+.quality-section .content {
+    flex: 1; /* Occupe l'espace disponible */
+    min-width: 300px; /* Largeur minimale */
+}
+
+/* Style pour le titre de la section qualité */
+.quality-section h2 {
+    font-size: 2rem; /* Grande taille */
+    font-weight: 700; /* Gras */
+    color: #1f2a44; /* Bleu foncé */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+}
+
+/* Style pour le texte de description */
+.quality-section p {
+    font-size: 1rem; /* Taille standard */
+    color: #4b5563; /* Gris moyen */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+}
+
+/* Style pour la liste des engagements */
+.quality-section ul {
+    list-style: none; /* Supprime les puces */
+}
+
+/* Style pour chaque élément de la liste */
+.quality-section li {
+    display: flex; /* Alignement en ligne */
+    align-items: flex-start; /* Alignement au début */
+    margin-bottom: 1rem; /* Espacement en bas */
+}
+
+/* Style pour l'icône de coche */
+.quality-section li span:first-child {
+    background-color: #dcfce7; /* Vert clair */
+    color: #15803d; /* Vert foncé */
+    padding: 0.25rem; /* Espacement interne */
+    border-radius: 50%; /* Cercle */
+    margin-right: 0.75rem; /* Espacement à droite */
+    font-weight: 700; /* Gras */
+}
+
+/* Style pour le texte des engagements */
+.quality-section li span:last-child {
+    font-size: 1rem; /* Taille standard */
+    color: #374151; /* Gris foncé */
+}
+
+/* Styles responsives pour écrans plus petits */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem; /* Réduit la taille du titre */
+    }
+
+    .hero-section p {
+        font-size: 1rem; /* Réduit la taille du texte */
+    }
+
+    .welcome-section h1 {
+        font-size: 2rem; /* Réduit la taille du titre */
+    }
+
+    .products-section h2,
+    .quality-section h2 {
+        font-size: 1.75rem; /* Réduit la taille des titres */
+    }
+}
+
+/* Style pour la section Qualité (version spécifique) */
+.qualite-section {
+    padding: 4rem 1rem; /* Espacement généreux */
+    background-color: white; /* Fond blanc */
+}
+
+/* Style pour le conteneur de la section qualité */
+.container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+    display: flex; /* Disposition flexible */
+    flex-direction: column; /* Par défaut en colonne */
+    gap: 2rem; /* Espacement entre éléments */
+}
+
+/* Style responsive pour écrans moyens et grands */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* Passe en ligne */
+        align-items: center; /* Centre verticalement */
+    }
+}
+
+/* Style pour le conteneur d'image */
+.image-container {
+    flex: 1; /* Occupe l'espace disponible */
+    padding-right: 2rem; /* Espacement à droite */
+}
+
+/* Style pour l'image de qualité */
+.qualite-image {
+    width: 100%; /* Pleine largeur */
+    height: auto; /* Hauteur proportionnelle */
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1); /* Ombre pour profondeur */
+}
+
+/* Style pour le conteneur de contenu */
+.content-container {
+    flex: 1; /* Occupe l'espace disponible */
+}
+
+/* Style pour le titre du contenu */
+.content-container h2 {
+    font-size: 2rem; /* Grande taille */
+    font-weight: bold; /* Gras */
+    color: #2d3748; /* Gris foncé */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+}
+
+/* Style pour le texte de description */
+.content-container p {
+    color: #4a5568; /* Gris moyen */
+    line-height: 1.6; /* Espacement des lignes */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+}
+
+/* Style pour la liste des engagements */
+.content-container ul {
+    list-style: none; /* Supprime les puces */
+    padding: 0; /* Sans padding */
+    margin: 0; /* Sans marge */
+}
+
+/* Style pour chaque élément de la liste */
+.content-container li {
+    display: flex; /* Alignement en ligne */
+    align-items: flex-start; /* Alignement au début */
+    margin-bottom: 1rem; /* Espacement en bas */
+}
+
+/* Style pour l'icône de coche */
+.icon {
+    background-color: #d1fae5; /* Vert clair */
+    color: #065f46; /* Vert foncé */
+    padding: 0.25rem; /* Espacement interne */
+    border-radius: 50%; /* Cercle */
+    margin-right: 0.75rem; /* Espacement à droite */
+    margin-top: 0.25rem; /* Alignement vertical */
+    font-weight: bold; /* Gras */
+}
+
+/* Style pour la section des produits */
+#section1 {
+    padding: 3rem 2rem; /* Espacement généreux */
+    max-width: 1400px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+}
+
+/* Style pour le titre de la section produits */
+#section1 h2 {
+    color: var(--primary); /* Vert principal */
+    font-size: 2.2rem; /* Grande taille */
+    text-align: center; /* Centré */
+    margin-bottom: 2.5rem; /* Espacement en bas */
+    position: relative; /* Pour l'effet de soulignement */
+    font-weight: 700; /* Gras */
+    letter-spacing: -0.5px; /* Resserre les lettres */
+}
+
+/* Pseudo-élément pour souligner le titre */
+#section1 h2::after {
+    content: ''; /* Élément vide */
+    position: absolute; /* Positionnement absolu */
+    bottom: -12px; /* Sous le titre */
+    left: 50%; /* Centré horizontalement */
+    transform: translateX(-50%); /* Décalage pour centrage */
+    width: 60px; /* Largeur de la ligne */
+    height: 3px; /* Hauteur de la ligne */
+    background-color: var(--secondary); /* Couleur orange (non définie dans :root) */
+}
+
+/* Style pour la grille des produits */
+.produits-container {
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Colonnes responsives */
+    gap: 2rem; /* Espacement entre cartes */
+}
+
+/* Style pour chaque produit */
+.produit {
+    background-color: #FFFFFF; /* Fond blanc */
+    border-radius: 12px; /* Coins arrondis */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07); /* Ombre douce */
+    transition: all 0.3s ease; /* Transition fluide */
+    overflow: hidden; /* Cache les débordements */
+    position: relative; /* Pour positionner les éléments internes */
+    height: 100%; /* Pleine hauteur */
+    display: flex; /* Disposition flexible */
+    flex-direction: column; /* Organisation en colonne */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Bordure subtile */
+}
+
+/* Effet au survol du produit */
+.produit:hover {
+    transform: translateY(-8px); /* Soulèvement */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+}
+
+/* Style pour l'image du produit */
+.produit img {
+    width: 100%; /* Pleine largeur */
+    height: 240px; /* Hauteur fixe */
+    object-fit: cover; /* Couvre sans déformation */
+    transition: all 0.4s ease; /* Transition fluide */
+}
+
+/* Effet de zoom au survol de l'image */
+.produit:hover img {
+    transform: scale(1.05); /* Légère augmentation */
+}
+
+/* Style pour le titre du produit */
+.produit h3 {
+    color: #333; /* Gris foncé */
+    padding: 1.2rem 1.2rem 0.5rem; /* Espacement interne */
+    font-size: 1.2rem; /* Taille moyenne */
+    font-weight: 600; /* Semi-gras */
+    margin: 0; /* Sans marge */
+    line-height: 1.3; /* Espacement des lignes */
+}
+
+/* Style pour le conteneur d'informations du produit */
+#FormationPdt {
+    padding: 0.5rem 1.2rem 1rem; /* Espacement interne */
+    flex-grow: 1; /* Occupe l'espace disponible */
+    display: flex; /* Disposition flexible */
+    flex-direction: column; /* Organisation en colonne */
+}
+
+/* Style pour le prix du produit */
+.price-tag {
+    font-size: 1.4rem; /* Taille plus grande */
+    font-weight: 700; /* Gras */
+    color: var(--primary); /* Vert principal */
+    margin: 0.8rem 0; /* Espacement vertical */
+}
+
+/* Style pour les paragraphes d'information */
+#FormationPdt p {
+    margin: 0.6rem 0; /* Espacement vertical */
+    color: #666; /* Gris moyen */
+    font-size: 0.95rem; /* Taille légèrement réduite */
+    display: flex; /* Alignement flexible */
+    justify-content: space-between; /* Espace les éléments */
+    align-items: center; /* Centre verticalement */
+}
+
+/* Style pour les éléments en gras dans les paragraphes */
+#FormationPdt p strong {
+    color: #444; /* Gris plus foncé */
+    font-weight: 600; /* Semi-gras */
+}
+
+/* Style pour les badges de stock */
+.stock-badge {
+    display: inline-block; /* Affiche en ligne */
+    padding: 0.2rem 0.6rem; /* Espacement interne */
+    border-radius: 20px; /* Coins très arrondis */
+    font-size: 0.75rem; /* Taille réduite */
+    font-weight: 600; /* Semi-gras */
+    margin-left: 0.5rem; /* Espacement à gauche */
+}
+
+/* Style pour stock disponible */
+.in-stock {
+    background-color: rgba(107, 142, 35, 0.15); /* Vert clair transparent */
+    color: #5a7b1e; /* Vert olive */
+}
+
+/* Style pour stock faible */
+.low-stock {
+    background-color: rgba(255, 215, 0, 0.2); /* Jaune transparent */
+    color: #b3980d; /* Jaune foncé */
+}
+
+/* Style pour rupture de stock */
+.out-of-stock {
+    background-color: rgba(220, 53, 69, 0.15); /* Rouge transparent */
+    color: #dc3545; /* Rouge vif */
+}
+
+/* Style pour les boutons d'action */
+.actions {
+    margin-top: auto; /* Pousse en bas */
+    display: flex; /* Alignement en ligne */
+    align-items: center; /* Centre verticalement */
+    gap: 0.8rem; /* Espacement entre boutons */
+    padding: 1rem 1.2rem; /* Espacement interne */
+    border-top: 1px solid rgba(0, 0, 0, 0.05); /* Bordure subtile */
+    background: linear-gradient(0deg, rgba(248,248,248,0.5) 0%, rgba(255,255,255,0) 100%); /* Dégradé subtil */
+}
+
+/* Style pour les boutons d'achat et de détail */
+.buttonAchete, .buttondetail {
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    gap: 0.5rem; /* Espacement entre icône et texte */
+    padding: 0.7rem 1rem; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis */
+    text-decoration: none; /* Sans soulignement */
+    transition: all 0.3s ease; /* Transition fluide */
+    font-weight: 600; /* Semi-gras */
+    font-size: 0.85rem; /* Taille réduite */
+}
+
+/* Style pour le bouton d'achat */
+.buttonAchete {
+    background-color: var(--primary); /* Vert principal */
+    color: white; /* Texte blanc */
+    border: none; /* Sans bordure */
+    flex: 2; /* Prend plus d'espace */
+    cursor: pointer; /* Curseur interactif */
+}
+
+/* Effet au survol du bouton d'achat */
+.buttonAchete:hover {
+    background-color: var(--primary-dark); /* Vert foncé */
+}
+
+/* Style pour bouton d'achat désactivé */
+.buttonAchete:disabled {
+    background-color: #cccccc; /* Gris clair */
+    cursor: not-allowed; /* Curseur interdit */
+    opacity: 0.7; /* Semi-transparent */
+}
+
+/* Style pour le bouton de détail */
+.buttondetail {
+    background-color: white; /* Fond blanc */
+    color: #666; /* Texte gris */
+    border: 1px solid #ddd; /* Bordure grise */
+    flex: 1; /* Prend moins d'espace */
+}
+
+/* Effet au survol du bouton de détail */
+.buttondetail:hover {
+    background-color: #f5f5f5; /* Gris très clair */
+    color: #333; /* Texte plus foncé */
+    border-color: #ccc; /* Bordure légèrement plus foncée */
+}
+
+/* Style pour les icônes dans les boutons */
+.buttonAchete img, .buttondetail img {
+    width: 16px; /* Taille réduite */
+    height: 16px; /* Hauteur fixe */
+    opacity: 0.9; /* Légèrement transparent */
+}
+
+/* Style pour le bouton de favori */
+.imgFvori {
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    width: 40px; /* Largeur fixe */
+    height: 40px; /* Hauteur fixe */
+    min-width: 40px; /* Largeur minimale */
+    border-radius: 50%; /* Cercle */
+    transition: all 0.3s ease; /* Transition fluide */
+    background-color: white; /* Fond blanc */
+    border: 1px solid #eee; /* Bordure subtile */
+}
+
+/* Effet au survol du bouton de favori */
+.imgFvori:hover {
+    background-color: #f5f5f5; /* Gris clair */
+    transform: scale(1.1); /* Légère augmentation */
+}
+
+/* Style pour l'icône de favori */
+.imgFvori img {
+    width: 20px; /* Taille réduite */
+    height: 20px; /* Hauteur fixe */
+}
+
+/* Animation pour l'apparition des produits */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Débute invisible */
+        transform: translateY(10px); /* Décalé vers le bas */
+    }
+    to {
+        opacity: 1; /* Complètement visible */
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+/* Applique l'animation aux produits */
+.produit {
+    animation: fadeIn 0.5s ease forwards; /* Animation d'apparition */
+}
+
+/* Style pour les messages de statut */
+.status-message {
+    margin: 1rem auto; /* Centré avec marge */
+    padding: 1rem; /* Espacement interne */
+    border-radius: 8px; /* Coins arrondis */
+    width: 100%; /* Pleine largeur */
+    max-width: 600px; /* Largeur maximale */
+    text-align: center; /* Texte centré */
+    animation: fadeIn 0.5s ease; /* Animation d'apparition */
+}
+
+/* Style pour les messages de succès */
+.success-message {
+    background-color: rgba(107, 142, 35, 0.1); /* Vert transparent */
+    color: var(--primary); /* Texte vert */
+    border: 1px solid rgba(107, 142, 35, 0.3); /* Bordure verte */
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
+    background-color: rgba(220, 53, 69, 0.1); /* Rouge transparent */
+    color: #dc3545; /* Texte rouge */
+    border: 1px solid rgba(220, 53, 69, 0.3); /* Bordure rouge */
+}
+
+/* Ajustements responsives pour écrans moyens */
+@media (max-width: 1024px) {
+    .produits-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Colonnes plus petites */
+    }
+}
+
+/* Ajustements responsives pour petits écrans */
+@media (max-width: 576px) {
+    .actions {
+        flex-wrap: wrap; /* Passe à la ligne */
+    }
+    
+    .buttonAchete, .buttondetail {
+        width: 100%; /* Pleine largeur */
+        justify-content: center; /* Centré */
+    }
+    
+    .imgFvori {
+        margin-top: 0.5rem; /* Espacement en haut */
+        width: 100%; /* Pleine largeur */
+        height: 40px; /* Hauteur fixe */
+        border-radius: 8px; /* Coins arrondis */
+    }
+}
+
+/* Style pour le conteneur de connexion */
+.connexion-container {
+    max-width: 400px; /* Largeur maximale */
+    margin: 2rem auto; /* Centré avec marge */
+    padding: 2rem; /* Espacement interne */
+    background-color: var(--card-bg); /* Fond blanc */
+    border-radius: var(--radius); /* Coins arrondis */
+    box-shadow: var(--shadow); /* Ombre douce */
+}
+
+/* Style pour le titre du formulaire de connexion */
+.connexion-container h2 {
+    text-align: center; /* Centré */
+    color: var(--primary); /* Vert principal */
+    font-size: 1.8rem; /* Taille moyenne */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+}
+
+/* Style pour les groupes de formulaire */
+.form-group {
+    margin-bottom: 1.2rem; /* Espacement en bas */
+}
+
+/* Style pour les labels des champs */
+.form-group label {
+    display: block; /* Occupe toute la largeur */
+    font-size: 1rem; /* Taille standard */
+    color: var(--text-dark); /* Texte sombre */
+}
+
+/* Style pour les champs de saisie */
+.form-group input {
+    width: 100%; /* Pleine largeur */
+    padding: 0.8rem; /* Espacement interne */
+    margin-top: 0.5rem; /* Espacement en haut */
+    border: 1px solid var(--border-light); /* Bordure claire */
+    border-radius: var(--radius); /* Coins arrondis */
+    font-size: 1rem; /* Taille standard */
+    color: var(--text-dark); /* Texte sombre */
+    background-color: var(--background); /* Fond clair */
+    transition: all 0.3s ease; /* Transition fluide */
+}
+
+/* Effet au focus des champs */
+.form-group input:focus {
+    border-color: var(--primary); /* Bordure verte */
+    box-shadow: 0 0 0 2px var(--primary-light); /* Halo vert clair */
+}
+
+/* Style pour les boutons génériques */
+button {
+    width: 100%; /* Pleine largeur */
+    padding: 0.8rem; /* Espacement interne */
+    background-color: var(--primary); /* Vert principal */
+    color: white; /* Texte blanc */
+    border: none; /* Sans bordure */
+    border-radius: var(--radius); /* Coins arrondis */
+    font-size: 1rem; /* Taille standard */
+    cursor: pointer; /* Curseur interactif */
+    transition: all 0.3s ease; /* Transition fluide */
+}
+
+/* Effet au survol des boutons */
+button:hover {
+    background-color: var(--primary-dark); /* Vert foncé */
+}
+
+/* Style pour boutons désactivés */
+button:disabled {
+    background-color: #cccccc; /* Gris clair */
+    cursor: not-allowed; /* Curseur interdit */
+}
+
+/* Style pour le pied de page */
+.footer {
+    background-color: #2d2a1e; /* Couleur sombre élégante */
+    color: #ffffff; /* Texte blanc */
+    padding: 3rem 0; /* Espacement vertical */
+    margin-top: 2rem; /* Espacement en haut */
+    font-family: Arial, sans-serif; /* Police classique */
+}
+
+/* Style pour le conteneur du pied de page */
+.footer-container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Colonnes responsives */
+    gap: 2rem; /* Espacement entre sections */
+    padding: 0 1rem; /* Espacement horizontal */
+}
+
+/* Style pour les titres des sections du pied de page */
+.footer-section h3 {
+    font-size: 1.2rem; /* Taille moyenne */
+    margin-bottom: 1rem; /* Espacement en bas */
+    color: #f4c542; /* Doré pour thème "Dahabia" */
+}
+
+/* Style pour les textes des sections */
+.footer-section p {
+    font-size: 0.9rem; /* Taille réduite */
+    line-height: 1.5; /* Espacement des lignes */
+}
+
+/* Style pour les listes des sections */
+.footer-section ul {
+    list-style: none; /* Supprime les puces */
+}
+
+/* Style pour les éléments de liste */
+.footer-section ul li {
+    margin-bottom: 0.5rem; /* Espacement en bas */
+}
+
+/* Style pour les liens des listes */
+.footer-section ul li a {
+    color: #ffffff; /* Texte blanc */
+    text-decoration: none; /* Sans soulignement */
+    font-size: 0.9rem; /* Taille réduite */
+    transition: color 0.3s; /* Transition fluide */
+}
+
+/* Effet au survol des liens */
+.footer-section ul li a:hover {
+    color: #f4c542; /* Doré au survol */
+}
+
+/* Style pour les liens généraux du pied de page */
+.footer-section a {
+    color: #ffffff; /* Texte blanc */
+    text-decoration: none; /* Sans soulignement */
+}
+
+/* Effet au survol des liens */
+.footer-section a:hover {
+    color: #f4c542; /* Doré */
+}
+
+/* Style pour les liens des réseaux sociaux */
+.social-links {
+    display: flex; /* Alignement en ligne */
+    gap: 1rem; /* Espacement entre icônes */
+}
+
+/* Style pour les icônes des réseaux sociaux */
+.social-links img {
+    width: 24px; /* Taille réduite */
+    height: 24px; /* Hauteur fixe */
+    transition: transform 0.3s; /* Transition fluide */
+}
+
+/* Effet au survol des icônes */
+.social-links img:hover {
+    transform: scale(1.1); /* Légère augmentation */
+}
+
+/* Style pour la partie inférieure du pied de page */
+.footer-bottom {
+    text-align: center; /* Centré */
+    padding-top: 2rem; /* Espacement en haut */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Bordure subtile */
+    margin-top: 2rem; /* Espacement en haut */
+}
+
+/* Style pour le texte de la partie inférieure */
+.footer-bottom p {
+    font-size: 0.85rem; /* Taille réduite */
+    color: #cccccc; /* Gris clair */
+}
+
+/* Ajustements responsives pour le pied de page */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        text-align: center; /* Texte centré */
+    }
+
+    .social-links {
+        justify-content: center; /* Centre les icônes */
+    }
+}
+
+/* Style pour la section des produits (version spécifique) */
+#section1 {
+    padding: 2rem; /* Espacement réduit */
+    background-color: #f7f7f7; /* Fond gris clair */
+}
+
+/* Style pour le titre de la section */
+#section1 h2 {
+    text-align: center; /* Centré */
+    font-size: 2rem; /* Taille moyenne */
+    margin-bottom: 2rem; /* Espacement en bas */
+    color: #333; /* Gris foncé */
+}
+
+/* Style pour la grille des produits */
+.produits-container {
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /* Colonnes responsives */
+    gap: 1.5rem; /* Espacement entre cartes */
+}
+
+/* Style pour les cartes de produit */
+.product-card {
+    background-color: white; /* Fond blanc */
+    border-radius: 1rem; /* Coins arrondis */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Ombre légère */
+    overflow: hidden; /* Cache les débordements */
+    position: relative; /* Pour positionner les éléments internes */
+    transition: transform 0.3s ease; /* Transition fluide */
+}
+
+/* Effet au survol des cartes */
+.product-card:hover {
+    transform: translateY(-5px); /* Soulèvement */
+}
+
+/* Style pour les images des produits */
+.product-card img {
+    width: 100%; /* Pleine largeur */
+    height: 200px; /* Hauteur fixe */
+    object-fit: cover; /* Couvre sans déformation */
+}
+
+/* Style pour les actions en haut de la carte */
+.top-actions {
+    position: absolute; /* Positionnement absolu */
+    top: 10px; /* Décalé du haut */
+    right: 10px; /* Décalé de la droite */
+}
+
+/* Style pour le bouton de favori */
+.heart-btn {
+    background: none; /* Fond transparent */
+    border: none; /* Sans bordure */
+    border-radius: 50%; /* Forme circulaire */
+    padding: 0.5rem; /* Espacement interne */
+    cursor: pointer; /* Curseur interactif */
+    transition: background 0.3s; /* Transition fluide */
+    outline: none; /* Supprime l'outline par défaut au clic */
+}
+
+/* Effet au survol */
+.heart-btn:hover {
+    background-color: #ffe6e6; /* Rose clair pour le survol */
+}
+
+/* État actif (quand le bouton est cliqué) */
+
+
+/* Style de l'icône SVG */
+.heart-icon {
+    transition: fill 0.3s, stroke 0.3s; /* Transition fluide pour l'icône */
+}
+
+
+
+/* Supprime l'outline au focus (pour éviter le cercle blanc) */
+.heart-btn:focus {
+    outline: none;
+}
+
+/* Style pour les informations du produit */
+.product-info {
+    padding: 1rem; /* Espacement interne */
+}
+
+/* Style pour le titre du produit */
+.product-info h3 {
+    font-size: 1.1rem; /* Taille réduite */
+    margin: 0 0 0.5rem 0; /* Espacement en bas */
+    color: #444; /* Gris foncé */
+}
+
+/* Style pour les textes d'information */
+.product-info p {
+    margin: 0.25rem 0; /* Espacement vertical */
+    font-size: 0.9rem; /* Taille réduite */
+    color: #666; /* Gris moyen */
+}
+
+/* Style pour le conteneur prix et actions */
+.price-and-actions {
+    display: flex; /* Alignement en ligne */
+    justify-content: space-between; /* Espace les éléments */
+    align-items: center; /* Centre verticalement */
+    margin-top: 1rem; /* Espacement en haut */
+}
+
+/* Style pour le prix du produit */
+.product-price {
+    font-size: 1.1rem; /* Taille réduite */
+    font-weight: bold; /* Gras */
+    color: #22c55e; /* Vert vif */
+}
+
+/* Style pour les actions du produit */
+.product-actions {
+    display: flex; /* Alignement en ligne */
+    align-items: center; /* Centre verticalement */
+}
+
+/* Style pour le bouton d'ajout au panier */
+.cart-btn {
+    background-color: #22c55e; /* Vert vif */
+    border: none; /* Sans bordure */
+    border-radius: 50%; /* Cercle */
+    padding: 0.5rem; /* Espacement interne */
+    cursor: pointer; /* Curseur interactif */
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    transition: background 0.3s; /* Transition fluide */
+}
+
+/* Effet au survol du bouton panier */
+.cart-btn:hover {
+    background-color: #2e7d32; /* Vert foncé */
+}
+
+/* Style pour l'icône du panier */
+.cart-btn svg {
+ stroke: white; }
+
+/* Style pour le message de rupture de stock */
+.out-of-stock {
+    font-size: 0.85rem; /* Taille réduite */
+    color: red; /* Rouge vif */
+    font-weight: bold; /* Gras */
+}
+
+/* Style pour la pagination */
+.pagination {
+    text-align: center; /* Centré */
+    margin-top: 2rem; /* Espacement en haut */
+}
+
+/* Style pour les liens de pagination */
+.pagination a {
+    display: inline-block; /* Affiche en ligne */
+    margin: 0 0.3rem; /* Espacement horizontal */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    background-color: #e0e0e0; /* Gris clair */
+    color: #333; /* Texte gris foncé */
+    text-decoration: none; /* Sans soulignement */
+    border-radius: 0.5rem; /* Coins arrondis */
+    transition: background 0.3s; /* Transition fluide */
+}
+
+/* Style pour les liens actifs ou au survol */
+.pagination a.active,
+.pagination a:hover {
+    background-color: #22c55e; /* Vert vif */
+    color: white; /* Texte blanc */
+}
+
+/* Style pour les actions du produit (répétition) */
+.product-actions {
+    display: flex; /* Alignement en ligne */
+    gap: 0.5rem; /* Espacement entre boutons */
+}
+
+/* Style pour le bouton d'information */
+.info-btn {
+    border: none; /* Sans bordure */
+    border-radius: 50%; /* Cercle */
+    padding: 0.5rem; /* Espacement interne */
+    cursor: pointer; /* Curseur interactif */
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
+    transition: background 0.3s; /* Transition fluide */
+}
+
+/* Effet au survol du bouton d'information */
+.info-btn:hover {
+    background-color: #f0f0f0; /* Gris clair */
+}
+
+/* Style pour l'icône du bouton d'information */
+.info-btn svg {
+    color: #666; /* Gris moyen */
+}
+.cart-icon:hover {
+    color: #007BFF;
+    transform: scale(1.1);
+    transition: 0.2s;
+    gap: 10px;
+}
+
+#userMenu {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    z-index: 50;
+    margin-top: 280px;
+    position: absolute;
+    right: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    transform-origin: top right;
+    animation: fadeIn 0.2s ease-out;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding: 10%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#userMenu.hidden {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+#userMenu .user-info {
+    padding: 16px 10px;
+    font-size: 14px;
+    color: #1f2937;
+    line-height: 1.7;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+#userMenu .user-info strong {
+    color: #4b5563;
+    font-weight: 600;
+}
+
+#userMenu .user-info p {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#userMenu .user-info p:last-child {
+    margin-bottom: 0;
+}
+
+#userMenu .logout {
+    padding: 12px 20px;
+    background-color: #f9fafb;
+    transition: background-color 0.2s ease;
+}
+
+#userMenu .logout:hover {
+    background-color: #f3f4f6;
+}
+
+#userMenu .logout a {
+    display: block;
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    text-align: center;
+    padding: 6px 0;
+}
+
+#userMenu .logout a:hover {
+    color: #b91c1c;
+}
+
+/* Style pour le bouton du menu utilisateur */
+.user-menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.user-menu-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.user-menu-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Pour une meilleure expérience mobile */
+@media (max-width: 640px) {
+    #userMenu {
+        width: calc(100% - 32px);
+        right: 16px;
+        margin-top: 260px;
+    }
+}
