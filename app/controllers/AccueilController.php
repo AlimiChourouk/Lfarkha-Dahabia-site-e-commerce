@@ -30,9 +30,21 @@ class AccueilController {
             $totalPages = 0;
         }
 
-        // Démarrer la session pour accéder aux données utilisateur
-        if (session_status() === PHP_SESSION_DISABLED || session_status() === PHP_SESSION_NONE) {
-            session_start();
+        if (isset($_SESSION['idUtilisateur'])) {
+            $idUtilisateur = $_SESSION['idUtilisateur'];
+        
+            $sql = "SELECT SUM(pp.QTE) AS total_qte
+                    FROM panier_produit pp
+                    JOIN panier p ON pp.idPanier = p.idPanier
+                    WHERE p.idUtilisateur = :idUtilisateur";
+        
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':idUtilisateur' => $idUtilisateur]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+            $totalQte = $result['total_qte'] ?? 0; 
+        } else {
+            $totalQte = 0;
         }
 
         // Charger la vue

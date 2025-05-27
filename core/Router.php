@@ -2,12 +2,17 @@
 require_once '../config/db.php'; 
 
 class Router {
+    $controllers = [
+        'AccueilController' => '../app/controllers/AccueilController.php',
+    ];
+    foreach ($controllers as $file) {
+        require_once $file;
+    }
     public function dispatch($route) {
-        // Supprimer les paramètres GET de la route
         $route = explode('?', $route)[0];
-
         switch ($route) {
             case 'accueil':
+<<<<<<< HEAD
                 require_once '../app/controllers/AccueilController.php';
                 $controller = new AccueilController();
                 $controller->index();
@@ -74,5 +79,14 @@ class Router {
             default:
                 echo "Page non trouvée.";
         }
+=======
+                (new AccueilController())->index();
+                exit;
+>>>>>>> bdc805b757110a362ca2c8b518e376923ba14f65
     }
+    default:
+    http_response_code(404);
+    echo "Erreur 404 : Page non trouvée.";
+    exit;
+}
 }
