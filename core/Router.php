@@ -1,21 +1,24 @@
 <?php
 require_once '../config/db.php'; 
-
-class Router {
-    $controllers = [
+$controllers = [
         'AccueilController' => '../app/controllers/AccueilController.php',
     ];
     foreach ($controllers as $file) {
         require_once $file;
     }
-    public function dispatch($route) {
+class Router {
+    
+   public function dispatch($route) {
         $route = explode('?', $route)[0];
+
         switch ($route) {
             case 'accueil':
-  }
-    default:
-    http_response_code(404);
-    echo "Erreur 404 : Page non trouvée.";
-    exit;
-}
+                (new AccueilController())->index();
+                break;
+
+            default:
+                echo "Page non trouvée.";
+                break;
+        }
+    }
 }
