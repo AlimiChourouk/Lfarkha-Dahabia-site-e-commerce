@@ -1,22 +1,6 @@
 <?php 
 
 require_once __DIR__ . '/../../config/db.php';
-if (isset($_SESSION['idUtilisateur'])) {
-    $idUtilisateur = $_SESSION['idUtilisateur'];
-
-    $sql = "SELECT SUM(pp.QTE) AS total_qte
-            FROM panier_produit pp
-            JOIN panier p ON pp.idPanier = p.idPanier
-            WHERE p.idUtilisateur = :idUtilisateur";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([':idUtilisateur' => $idUtilisateur]);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    $totalQte = $result['total_qte'] ?? 0; 
-} else {
-    $totalQte = 0;
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,7 +40,7 @@ if (isset($_SESSION['idUtilisateur'])) {
             </div>
         </div>
         <a href="#">à propos</a>
-        <a href="#">contact</a>
+        <a href="?rout=contact">contact</a>
         <div class="relative inline-block text-left" style="display: flex; align-items: center; gap: 15px;">
             <a href="?rout=panier" class="cart-icon" title="Voir le panier" style="color: #333; font-size: 22px;">
                 <i class="fas fa-shopping-cart"></i>
@@ -71,17 +55,16 @@ if (isset($_SESSION['idUtilisateur'])) {
                 </button>
                 <div id="userMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
     <div class="px-4 py-3 text-sm text-gray-700 space-y-2">
-        <a href="?rout=profil.php" class="block text-blue-600 hover:underline"> Mon Profil</a>
-        <a href="?rout=mes-commandes.php" class="block text-blue-600 hover:underline"> Mes Commandes</a>
-    </div>
+        <p><strong>Nom :</strong> <?= htmlspecialchars($_SESSION['nomUtil'] ?? 'Inconnu') ?></p>
+        <a href="?rout=dashboard" class="block text-blue-600 hover:underline"> Mon Profil</a>
+            </div>
     <div class="border-t px-4 py-2">
         <a href="deconnexion.php" class="block text-red-600 hover:text-red-800">Déconnexion</a>
     </div>
 </div>
 
             <?php else: ?>
-                <a href="?rout=connexion" class="text-blue-600 hover:underline mr-2">Connexion</a>
-                <a href="?rout=inscription" class="text-blue-600 hover:underline">Inscription</a>
+                <a href="?rout=connexion" class="btn-connexion">Connexion</a>
             <?php endif; ?>
         </div>
     </header>
@@ -250,7 +233,12 @@ if (isset($_SESSION['idUtilisateur'])) {
             </div>
         <?php endforeach; } ?>
     </div>
-
+    <a href="?rout=produits" class="continue-shopping">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+    </svg>
+    Continuer mes achats
+    </a>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Hide quantity inputs
@@ -417,9 +405,9 @@ if (isset($_SESSION['idUtilisateur'])) {
                 <h3>Liens rapides</h3>
                 <ul>
                     <li><a href="index.php">Accueil</a></li>
-                    <li><a href="panier.php">Panier</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="inscription.php">Inscription</a></li>
+                    <li><a href="">Panier</a></li>
+                    <li><a href="">Connexion</a></li>
+                    <li><a href="">Inscription</a></li>
                 </ul>
             </div>
             <div class="footer-section">
