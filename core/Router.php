@@ -59,12 +59,18 @@ class Router {
                 require_once '../app/controllers/PanierController.php';
                 $controller = new PanierController($GLOBALS['pdo']);
                 $controller->handleRequest(); 
-                                break;
+                break;
             case 'produit/details':
                 require_once '../app/controllers/ProduitController.php';
                 $controller = new ProduitController($GLOBALS['pdo']);
                 $controller->showDetails();
                 break;
+            case 'admin/login':
+                require_once '../app/controllers/LoginAdminController.php';
+                $controller = new LoginAdminController();
+                $controller->index();
+                break;
+                
             default:
                 echo "Page non trouvée.";
         }
