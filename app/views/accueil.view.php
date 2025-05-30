@@ -28,10 +28,7 @@ require_once __DIR__ . '/../../config/db.php';
                 <a href="#">Œufs</a>
             </div>
         </nav>
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Recherche">
-            <img class="Icon" src="img/cherche.png" alt="Search Icon">
-        </div>
+       
         <div id="logoCustom-container">
             <img id="logoimg" src="img/logo.png" alt="logo">
             <div class="custom-container">
