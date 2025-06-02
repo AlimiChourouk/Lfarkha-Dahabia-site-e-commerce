@@ -15,17 +15,9 @@ require_once __DIR__ . '/../../config/db.php';
     <nav class="menu">
         <a href="index.php">Accueil</a>
         <a href="?rout=produits">Produit</a>
+        <a href="?rout=conseils">Conseils</a>
     </nav>
-    </nav>
-        <nav class="dropdown">
-    <p class="dropdown-btn">Catégorie</p>
-    <div class="dropdown-content">
-        <a href="?rout=produits&categorie=Poules">Poules</a>
-        <a href="?rout=produits&categorie=Coqs">Coqs</a>
-        <a href="?rout=produits&categorie=Poussins">Poussins</a>
-        <a href="?rout=produits&categorie=Œufs">Œufs</a>
-    </div>
-</nav>
+    
    
     <div id="logoCustom-container">
         <img id="logoimg" src="img/logo.png" alt="logo">
