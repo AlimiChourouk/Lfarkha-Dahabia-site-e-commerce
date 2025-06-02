@@ -3,6 +3,7 @@ require_once '../config/db.php';
 $controllers = [
         'AccueilController' => '../app/controllers/AccueilController.php',
         'InscriptionController' => '../app/controllers/InscriptionController.php',
+        'ConnexionController' => '../app/controllers/ConnexionController.php',
         'MessageController' => '../app/controllers/MessageController.php',
     ];
     foreach ($controllers as $file) {
@@ -17,14 +18,22 @@ class Router {
             case 'accueil':
                 (new AccueilController())->index();
                 break;
-              case 'inscription':
+            case 'inscription':
                 (new InscriptionController())->index();
                 exit;
 
             case 'inscription/register':
                 $this->checkPost();
                 (new InscriptionController())->register();
-                exit;    
+                exit;  
+            case 'connexion':
+                    (new ConnexionController())->index();
+                    exit;
+    
+            case 'connexion/login':
+                    $this->checkPost();
+                    (new ConnexionController())->login();
+                    exit;      
             case 'contact':
                 (new MessageController($GLOBALS['pdo']))->index();
                 exit;
