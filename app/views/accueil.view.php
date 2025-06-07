@@ -1,6 +1,7 @@
 <?php 
 
 require_once __DIR__ . '/../../config/db.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,17 +19,8 @@ require_once __DIR__ . '/../../config/db.php';
         <nav class="menu">
             <a href="index.php">Accueil</a>
             <a href="?rout=produits">Produit</a>
+            <a href="?rout=conseils">Conseils</a>
         </nav>
-        <nav class="dropdown">
-            <p class="dropdown-btn">Catégorie</p>     
-            <div class="dropdown-content">
-                <a href="#">Poules</a>
-                <a href="#">Coqs</a>
-                <a href="#">Poussins</a>
-                <a href="#">Œufs</a>
-            </div>
-        </nav>
-       
         <div id="logoCustom-container">
             <img id="logoimg" src="img/logo.png" alt="logo">
             <div class="custom-container">
@@ -36,8 +28,10 @@ require_once __DIR__ . '/../../config/db.php';
                 <span class="custom-text-2">Dahabia</span>
             </div>
         </div>
-        <a href="#">à propos</a>
-        <a href="?rout=contact">contact</a>
+        <div class="menu">
+           <a href="index.php?rout=about">À propos</a>
+           <a href="?rout=contact">contact</a>
+        </div>
         <div class="relative inline-block text-left" style="display: flex; align-items: center; gap: 15px;">
             <a href="?rout=panier" class="cart-icon" title="Voir le panier" style="color: #333; font-size: 22px;">
                 <i class="fas fa-shopping-cart"></i>
@@ -56,7 +50,7 @@ require_once __DIR__ . '/../../config/db.php';
         <a href="?rout=dashboard" class="block text-blue-600 hover:underline"> Mon Profil</a>
             </div>
     <div class="border-t px-4 py-2">
-        <a href="deconnexion.php" class="block text-red-600 hover:text-red-800">Déconnexion</a>
+        <a href="?rout=Deconnexion" class="block text-red-600 hover:text-red-800">Déconnexion</a>
     </div>
 </div>
 
@@ -94,8 +88,8 @@ require_once __DIR__ . '/../../config/db.php';
                 </p>
                 <!-- Boutons d'appel à l'action -->
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="chicken.php" class="btn btn-primary">Découvrir nos produits</a>
-                    <a href="/about" class="btn btn-secondary">En savoir plus</a>
+                    <a href="?rout=produits" class="btn btn-primary">Découvrir nos produits</a>
+                    <a href="?rout=about" class="btn btn-secondary">En savoir plus</a>
                 </div>
             </div>
         </div>
@@ -391,43 +385,59 @@ require_once __DIR__ . '/../../config/db.php';
             </div>
         </div>
     </section>
-    <!-- Pied de page -->
-    <footer class="footer">
+         <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Lfarkha Dahabia</h3>
-                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels.</p>
+               <div id="logoCustom-container">
+            <img id="logoimg" src="../public/img/logo.png" alt="logo" class="responsive-image" loading="lazy">
+            <div class="custom-container">
+                <span class="custom-text-1">Lfarkha</span>
+                <span class="custom-text-2">Dahabia</span>
             </div>
+        </div>
+                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels et de qualité supérieure.</p>
+                <div class="mt-4">
+                    <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                        <i class="fas fa-certificate mr-1"></i>Certifié Bio
+                    </span>
+                </div>
+            </div>
+            
             <div class="footer-section">
-                <h3>Liens rapides</h3>
+                <h3><i class="fas fa-link mr-2"></i>Liens rapides</h3>
                 <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="">Panier</a></li>
-                    <li><a href="">Connexion</a></li>
-                    <li><a href="">Inscription</a></li>
+                    <li><a href="index.php"><i class="fas fa-home mr-2"></i>Accueil</a></li>
+                    <li><a href="?rout=produits"><i class="fas fa-leaf mr-2"></i>Nos Produits</a></li>
+                    <li><a href="?rout=panier"><i class="fas fa-shopping-cart mr-2"></i>Panier</a></li>
+                    <li><a href="?rout=favoris"><i class="fas fa-heart mr-2"></i>Favoris</a></li>
+                    <li><a href="?rout=connexion"><i class="fas fa-sign-in-alt mr-2"></i>Connexion</a></li>
+                    <li><a href="?rout=inscription"><i class="fas fa-user-plus mr-2"></i>Inscription</a></li>
                 </ul>
             </div>
+            
             <div class="footer-section">
-                <h3>Contactez-nous</h3>
-                <p>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
-                <p>Téléphone : +212 123 456 789</p>
+                <h3><i class="fas fa-phone mr-2"></i>Contactez-nous</h3>
+                <p><i class="fas fa-envelope mr-2"></i>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
+                <p><i class="fas fa-phone mr-2"></i>Téléphone : +212 123 456 789</p>
+                <p><i class="fas fa-clock mr-2"></i>Lun-Ven : 9h-18h</p>
             </div>
+            
             <div class="footer-section">
-                <h3>Suivez-nous</h3>
-                <!-- Liens vers les réseaux sociaux -->
+                <h3><i class="fas fa-share-alt mr-2"></i>Suivez-nous</h3>
                 <div class="social-links">
-                    <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
-        <!-- Mention légale avec année dynamique -->
+        
         <div class="footer-bottom">
-            <p>© <?php echo date('Y'); ?> Lfarkha Dahabia. Tous droits réservés.</p>
+            <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
         </div>
     </footer>
-    <!-- Inclut le fichier JavaScript pour les interactions dynamiques -->
+    
+
     <script src="/Lfarkha-Dahabia-site-e-commerce/public/scripte.js"></script>
 
 </body>
