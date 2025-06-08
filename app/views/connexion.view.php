@@ -8,6 +8,7 @@ require_once __DIR__ . '/../../config/db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Lfarkha-Dahabia-site-e-commerce/public/css/connexion.css?v=<?= time(); ?>">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <title>Connexion - Lfarkha Dahabia</title>
 </head>
 <body>
@@ -17,7 +18,6 @@ require_once __DIR__ . '/../../config/db.php';
         <a href="?rout=produits">Produit</a>
         <a href="?rout=conseils">Conseils</a>
     </nav>
-    
    
     <div id="logoCustom-container">
         <img id="logoimg" src="img/logo.png" alt="logo">
@@ -74,40 +74,56 @@ require_once __DIR__ . '/../../config/db.php';
             </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
+ <footer class="footer">
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Lfarkha Dahabia</h3>
-                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels.</p>
+               <div id="logoCustom-container">
+            <img id="logoimg" src="../public/img/logo.png" alt="logo" class="responsive-image" loading="lazy">
+            <div class="custom-container">
+                <span class="custom-text-1">Lfarkha</span>
+                <span class="custom-text-2">Dahabia</span>
             </div>
+        </div>
+                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels et de qualité supérieure.</p>
+                <div class="mt-4">
+                    <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                        <i class="fas fa-certificate mr-1"></i>Certifié Bio
+                    </span>
+                </div>
+            </div>
+            
             <div class="footer-section">
-                <h3>Liens rapides</h3>
+                <h3><i class="fas fa-link mr-2"></i>Liens rapides</h3>
                 <ul>
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="?rout=panier">Panier</a></li>
-                    <li><a href="?rout=connexion">Connexion</a></li>
-                    <li><a href="?rout=inscription">Inscription</a></li>
+                    <li><a href="index.php"><i class="fas fa-home mr-2"></i>Accueil</a></li>
+                    <li><a href="?rout=produits"><i class="fas fa-leaf mr-2"></i>Nos Produits</a></li>
+                    <li><a href="?rout=panier"><i class="fas fa-shopping-cart mr-2"></i>Panier</a></li>
+                    <li><a href="?rout=favoris"><i class="fas fa-heart mr-2"></i>Favoris</a></li>
+                    <li><a href="?rout=connexion"><i class="fas fa-sign-in-alt mr-2"></i>Connexion</a></li>
+                    <li><a href="?rout=inscription"><i class="fas fa-user-plus mr-2"></i>Inscription</a></li>
                 </ul>
             </div>
+            
             <div class="footer-section">
-                <h3>Contactez-nous</h3>
-                <p>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
-                <p>Téléphone : +212 634644220</p>
+                <h3><i class="fas fa-phone mr-2"></i>Contactez-nous</h3>
+                <p><i class="fas fa-envelope mr-2"></i>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
+                <p><i class="fas fa-phone mr-2"></i>Téléphone : +212 123 456 789</p>
+                <p><i class="fas fa-clock mr-2"></i>Lun-Ven : 9h-18h</p>
             </div>
+            
             <div class="footer-section">
-                <h3>Suivez-nous</h3>
+                <h3><i class="fas fa-share-alt mr-2"></i>Suivez-nous</h3>
                 <div class="social-links">
-                    <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="img/twitter.png" alt="Twitter"></a>
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
+        
         <div class="footer-bottom">
-            <p>© <?php echo date('Y'); ?> Lfarkha Dahabia. Tous droits réservés.</p>
+            <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
         </div>
     </footer>
-
 </body>
 </html>
