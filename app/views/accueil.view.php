@@ -134,29 +134,7 @@ require_once __DIR__ . '/../../config/db.php';
     <?php endif; ?>
 
     <div class="produits-container">
-        <?php
-        try {
-            $query = "SELECT idProduit, nomProduit, age, prix, imgProduit, quantiteStock 
-                      FROM produit 
-                      LIMIT 4"; // Affiche seulement les 4 premiers produits
-            $stmt = $pdo->prepare($query);
-            $stmt->execute();
-            $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            // Favoris
-            $favoris = [];
-            if (isset($_SESSION['idUtilisateur'])) {
-                $stmt = $pdo->prepare("SELECT idProduit FROM favoris WHERE idUtilisateur = ?");
-                $stmt->execute([$_SESSION['idUtilisateur']]);
-                $favoris = array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'idProduit');
-            }
-        } catch (PDOException $e) {
-            error_log("Erreur lors de la récupération des produits : " . $e->getMessage());
-            echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer plus tard.</p>";
-            $produits = [];
-        }
-
-        if (empty($produits)) {
+        <?php  if (empty($produits)) {
             echo "<p>Aucun produit disponible pour le moment.</p>";
         } else {
             foreach ($produits as $produit):
@@ -230,101 +208,8 @@ require_once __DIR__ . '/../../config/db.php';
     </svg>
     Continuer mes achats
     </a>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Hide quantity inputs
-        const inputQtes = document.querySelectorAll('input[name="qte"]');
-        inputQtes.forEach(input => {
-            input.style.display = "none";
-        });
-
-        // Handle heart button clicks
-        document.querySelectorAll('.heart-btn').forEach(button => {
-            button.addEventListener('click', async function(event) {
-                event.preventDefault();
-
-                // Ensure user is logged in
-                if (this.hasAttribute('disabled')) {
-                    alert('Veuillez vous connecter pour ajouter aux favoris.');
-                    return;
-                }
-
-                const productId = this.dataset.productId;
-                const isFavorited = this.classList.contains('favorited');
-
-                try {
-                    console.log(`Attempting to toggle favorite for product ID: ${productId}, currently favorited: ${isFavorited}`);
-                    
-                    // Correction de l'URL - utiliser BASE_URL et la bonne route
-                    const response = await fetch('<?= BASE_URL ?>?rout=favoris/toggle', {
-                        method: 'POST',
-                        headers: { 
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'X-Requested-With': 'XMLHttpRequest' // Indiquer que c'est une requête AJAX
-                        },
-                        body: `idProduit=${encodeURIComponent(productId)}`
-                    });
-
-                    // Check if response is OK
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-
-                    const result = await response.json();
-                    console.log('Server response:', result);
-
-                    if (result.success) {
-                        // Toggle the favorited state
-                        this.classList.toggle('favorited');
-                        const heartIcon = this.querySelector('.heart-icon');
-                        
-                        if (isFavorited) {
-                            // Retirer des favoris
-                            heartIcon.style.fill = 'none';
-                            heartIcon.style.stroke = '#FFFFFF';
-                        } else {
-                            // Ajouter aux favoris
-                            heartIcon.style.fill = '#ff0000';
-                            heartIcon.style.stroke = '#ff0000';
-                        }
-                        
-                        // Optionnel: afficher un message de confirmation
-                        // alert(result.message);
-                    } else {
-                        alert(result.message || 'Erreur lors de la mise à jour des favoris.');
-                    }
-                } catch (error) {
-                    console.error('Fetch error:', error);
-                    alert('Erreur réseau ou serveur. Veuillez réessayer.');
-                }
-            });
-        });
-    });
-    </script>
 </section>
     
-
-
-<!-- CSS pour les alertes -->
-
-        <!-- Pagination -->
-        <?php
-        // Compte le nombre total de produits pour la pagination
-        $totalQuery = "SELECT COUNT(*) FROM Produit";
-        $totalStmt = $pdo->query($totalQuery);
-        $totalProducts = $totalStmt->fetchColumn();
-        $totalPages = ceil($totalProducts / $itemsPerPage);
-
-        // Affiche les liens de pagination si nécessaire
-        if ($totalPages > 1): ?>
-            <div class="pagination">
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                    <a href="?page=<?= $i ?>" class="<?= $page == $i ? 'active' : '' ?>"><?= $i ?></a>
-                <?php endfor; ?>
-            </div>
-        <?php endif; ?>
-    </section>
-
     <!-- Section sur l'engagement qualité -->
     <section class="qualite-section">
         <div class="container">
@@ -437,8 +322,10 @@ require_once __DIR__ . '/../../config/db.php';
         </div>
     </footer>
     
-
-    <script src="/Lfarkha-Dahabia-site-e-commerce/public/scripte.js"></script>
+<script>
+    const BASE_URL = "<?= BASE_URL ?>";
+</script>
+    <script src="/Lfarkha-Dahabia-site-e-commerce/public/scripte.js?v=<?= time(); ?>"></script>
 
 </body>
 </html>
