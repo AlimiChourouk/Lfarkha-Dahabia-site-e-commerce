@@ -1,6 +1,5 @@
 <?php
-require_once __DIR__ . '/../models/Produit.php';
-
+ require_once __DIR__ . '/../models/Produit.php';
 class AccueilController {
     public function index() {
         global $pdo; 
@@ -8,28 +7,26 @@ class AccueilController {
         $itemsPerPage = 12;
         $offset = ($page - 1) * $itemsPerPage;
 
-        try {
-            // Récupérer les produits
+               try {
             $query = "SELECT idProduit, nomProduit, age, prix, imgProduit, quantiteStock 
-                      FROM Produit 
-                      LIMIT :limit OFFSET :offset";
+                      FROM produit 
+                      LIMIT 4"; 
             $stmt = $pdo->prepare($query);
-            $stmt->bindValue(':limit', $itemsPerPage, PDO::PARAM_INT);
-            $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
             $stmt->execute();
             $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // Compter le total des produits pour la pagination
-            $totalQuery = "SELECT COUNT(*) FROM Produit";
-            $totalStmt = $pdo->query($totalQuery);
-            $totalProducts = $totalStmt->fetchColumn();
-            $totalPages = ceil($totalProducts / $itemsPerPage);
+            // Favoris
+            $favoris = [];
+            if (isset($_SESSION['idUtilisateur'])) {
+                $stmt = $pdo->prepare("SELECT idProduit FROM favoris WHERE idUtilisateur = ?");
+                $stmt->execute([$_SESSION['idUtilisateur']]);
+                $favoris = array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'idProduit');
+            }
         } catch (PDOException $e) {
             error_log("Erreur lors de la récupération des produits : " . $e->getMessage());
+            echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer plus tard.</p>";
             $produits = [];
-            $totalPages = 0;
         }
-
         if (isset($_SESSION['idUtilisateur'])) {
             $idUtilisateur = $_SESSION['idUtilisateur'];
         
@@ -46,9 +43,7 @@ class AccueilController {
         } else {
             $totalQte = 0;
         }
-
-        // Charger la vue
+        
         require __DIR__ . '/../views/accueil.view.php';
     }
 }
-?>
