@@ -190,7 +190,7 @@
             <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
         </div>
     </footer>
-    
+
     <script src="/Lfarkha-Dahabia-site-e-commerce/public/scripte.js?v=<?= time(); ?>"></script>
 </body>
 </html>
