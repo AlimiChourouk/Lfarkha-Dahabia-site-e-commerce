@@ -252,7 +252,10 @@ h2 {
     margin: 0 auto;
     flex: 1 0 auto; /* Allow container to grow but not shrink past content */
 }
-
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
 .error {
     color: red;
     font-size: 0.9rem;
