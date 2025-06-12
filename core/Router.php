@@ -5,6 +5,7 @@ $controllers = [
         'InscriptionController' => '../app/controllers/InscriptionController.php',
         'ConnexionController' => '../app/controllers/ConnexionController.php',
         'MessageController' => '../app/controllers/MessageController.php',
+        'AboutController' => '../app/controllers/AboutController.php',
     ];
     foreach ($controllers as $file) {
         require_once $file;
@@ -42,6 +43,9 @@ class Router {
             $this->checkPost();
             (new MessageController($GLOBALS['pdo']))->envoyer();
             exit;
+            case 'about':
+                (new AboutController($GLOBALS['pdo']))->index();
+                exit;
             default:
                 echo "Page non trouvée.";
                 break;
