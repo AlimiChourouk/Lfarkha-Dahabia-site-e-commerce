@@ -61,7 +61,9 @@ class Router {
                 $this->checkPost();
                 (new PanierController($GLOBALS['pdo']))->handleRequest();
                 exit;
-
+            case 'conseils':
+                (new ConseilController($GLOBALS['pdo']))->index();
+                exit;
             default:
                 echo "Page non trouvée.";
                 break;
