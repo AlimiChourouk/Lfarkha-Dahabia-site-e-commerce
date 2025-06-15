@@ -118,28 +118,39 @@
                         <div class="product-price"><?= htmlspecialchars($produit['prix']) ?> DH</div>
 
                         <div class="product-actions">
-                            <?php if ($produit['quantiteStock'] > 0): ?>
-                                <?php if (isset($_SESSION['idUtilisateur']) && !empty($_SESSION['idUtilisateur'])): ?>
-                                    <form method="POST" action="<?= BASE_URL ?>?rout=panier/ajouter" style="display: flex; align-items: center; gap: 8px;">
-                                        <input type="hidden" name="idProduit" value="<?= $produit['idProduit'] ?>">
-                                        <input type="number" name="qte" value="20" min="20" max="<?= $produit['quantiteStock'] ?>" class="w-16 p-1 border border-gray-300 rounded" required style="display: none;">
-                                        <button type="submit" class="cart-btn" aria-label="Ajouter au panier">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <circle cx="9" cy="21" r="1"></circle>
-                                                <circle cx="20" cy="21" r="1"></circle>
-                                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                <?php else: ?>
-                                    <a class="cart-btn" href="<?= BASE_URL ?>?rout=connexion" aria-label="Connexion pour ajouter au panier">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="9" cy="21" r="1"></circle>
-                                            <circle cx="20" cy="21" r="1"></circle>
-                                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                                        </svg>
-                                    </a>
-                                <?php endif; ?>
+                          <?php if ($produit['quantiteStock'] > 0): ?>
+    <?php if (isset($_SESSION['idUtilisateur']) && !empty($_SESSION['idUtilisateur'])): ?>
+        <form method="POST" action="<?= BASE_URL ?>?rout=panier/ajouter" style="display: flex; align-items: center; gap: 8px;">
+            <input type="hidden" name="idProduit" value="<?= $produit['idProduit'] ?>">
+            <input type="number" name="qte" 
+                   value="<?= $produit['categorie'] === 'Œufs' ? 20 : 10 ?>" 
+                   min="<?= $produit['categorie'] === 'Œufs' ? 20 : 10 ?>" 
+                   max="<?= $produit['quantiteStock'] ?>" 
+                   class="w-16 p-1 border border-gray-300 rounded" 
+                   required 
+                   style="display: none;">
+            <button type="submit" class="cart-btn" aria-label="Ajouter au panier">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </button>
+        </form>
+    <?php else: ?>
+        <a class="cart-btn" href="<?= BASE_URL ?>?rout=connexion" aria-label="Connexion pour ajouter au panier">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+        </a>
+    <?php endif; ?>
+<?php else: ?>
+    <span class="out-of-stock">Rupture de stock</span>
+<?php endif; ?>
+                                   
+                            
 
                                 <a href="<?= BASE_URL ?>?rout=produit/details&idProduit=<?= $produit['idProduit'] ?>" class="info-btn" aria-label="Voir les détails du produit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -148,9 +159,8 @@
                                         <line x1="12" y1="8" x2="12" y2="8"></line>
                                     </svg>
                                 </a>
-                            <?php else: ?>
-                                <span class="out-of-stock">Rupture de stock</span>
-                            <?php endif; ?>
+                            
+                                
                         </div>
                     </div>
                 </div>
@@ -212,7 +222,6 @@
             <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
         </div>
     </footer>
-
     <script src="/Lfarkha-Dahabia-site-e-commerce/public/scripte.js?v=<?= time(); ?>"></script>
-    </body>
+</body>
 </html>
