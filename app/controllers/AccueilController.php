@@ -1,5 +1,6 @@
 <?php
- require_once __DIR__ . '/../models/Produit.php';
+require_once __DIR__ . '/../models/Produit.php';
+
 class AccueilController {
     public function index() {
         global $pdo; 
@@ -7,8 +8,9 @@ class AccueilController {
         $itemsPerPage = 12;
         $offset = ($page - 1) * $itemsPerPage;
 
-               try {
-            $query = "SELECT idProduit, nomProduit, age, prix, imgProduit, quantiteStock 
+        try {
+            // Modified query to include categorie
+            $query = "SELECT idProduit, nomProduit, age, prix, imgProduit, quantiteStock, categorie 
                       FROM produit 
                       LIMIT 4"; 
             $stmt = $pdo->prepare($query);
@@ -27,6 +29,7 @@ class AccueilController {
             echo "<p style='color: red;'>Une erreur est survenue. Veuillez réessayer plus tard.</p>";
             $produits = [];
         }
+
         if (isset($_SESSION['idUtilisateur'])) {
             $idUtilisateur = $_SESSION['idUtilisateur'];
         
