@@ -6,6 +6,7 @@ $controllers = [
         'ConnexionController' => '../app/controllers/ConnexionController.php',
         'MessageController' => '../app/controllers/MessageController.php',
         'AboutController' => '../app/controllers/AboutController.php',
+        'PanierController' => '../app/controllers/PanierController.php',
     ];
     foreach ($controllers as $file) {
         require_once $file;
@@ -46,6 +47,21 @@ class Router {
             case 'about':
                 (new AboutController($GLOBALS['pdo']))->index();
                 exit;
+                  case 'panier':
+                (new PanierController($GLOBALS['pdo']))->handleRequest();
+                exit;
+
+            case 'panier/ajouter':
+                $this->checkPost();
+                (new PanierController($GLOBALS['pdo']))->ajouterProduit();
+                exit;
+
+            case 'panier/modifier':
+            case 'panier/supprimer':
+                $this->checkPost();
+                (new PanierController($GLOBALS['pdo']))->handleRequest();
+                exit;
+
             default:
                 echo "Page non trouvée.";
                 break;

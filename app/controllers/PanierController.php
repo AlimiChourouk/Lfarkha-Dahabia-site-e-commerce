@@ -85,7 +85,4 @@ class PanierController {
 
     require __DIR__ . '/../views/panier.view.php';
 }
-
-    
-    
 }
