@@ -1,0 +1,1102 @@
+:root {
+    --primary: #4CAF50; /* Couleur principale (vert) */
+    --primary-light: #80c883; /* Vert clair pour survols et bordures */
+    --primary-dark: #3b8a3f; /* Vert foncé pour états actifs */
+    --accent: #FFC107; /* Couleur d'accentuation (jaune/orange) */
+    --text-dark: #212121; /* Texte sombre pour lisibilité */
+    --text-medium: #757575; /* Texte gris pour éléments secondaires */
+    --text-light: #FFFFFF; /* Texte blanc pour fonds sombres */
+    --background: #F9F9F9; /* Fond clair pour le corps */
+    --card-bg: #FFFFFF; /* Fond blanc pour cartes et sections */
+    --border-light: #EEEEEE; /* Bordure claire pour séparations */
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Ombre douce pour profondeur */
+    --radius: 12px; /* Rayon de bordure pour coins arrondis */
+    --transition: all 0.3s ease; /* Transition fluide pour interactions */
+}
+
+/* ===== RESET CSS ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex; /* Disposition en ligne pour aligner les éléments */
+    justify-content: space-between; /* Espace les éléments uniformément */
+    align-items: center; /* Centre verticalement */
+    background-color: var(--card-bg); /* Fond blanc pour propreté */
+    padding: 1.2rem 5%; /* Espacement interne généreux */
+    position: sticky; /* Fixe l'en-tête en haut lors du défilement */
+    top: 0; /* Colle au sommet */
+    z-index: 1000; /* Priorité d'affichage */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05); /* Ombre subtile */
+}
+
+#logoCustom-container{
+  display: flex;
+  align-items: center;
+}
+
+/* Styles pour le conteneur du texte du logo */
+.custom-container {
+    margin-left: 0.5rem; /* Petite marge à gauche */
+    font-weight: bold; /* Texte en gras pour importance */
+    font-size: 20px;
+    letter-spacing: 0.05em; /* Espacement des lettres pour élégance */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)); /* Ombre portée légère */
+    transition: all 0.3s ease-in-out; /* Transition fluide pour interactions */
+}
+
+/* Style pour le premier texte du logo (Lfarkha) */
+.custom-text-1 {
+    background: linear-gradient(to right, #f59e0b, #d97706, #b45309); /* Dégradé ambré */
+    -webkit-background-clip: text; /* Préfixe webkit pour compatibilité */
+    background-clip: text; /* Applique le dégradé au texte */
+    -webkit-text-fill-color: transparent; /* Webkit pour rendre le texte transparent */
+    color: transparent; /* Rend le texte transparent pour montrer le dégradé */
+    transition: all 0.3s ease-in-out; /* Transition pour survol */
+}
+
+/* Style pour le second texte du logo (Dahabia) */
+.custom-text-2 {
+    background: linear-gradient(to right, #d97706, #fbbf24, #f59e0b); /* Dégradé ambré/jaune */
+    -webkit-background-clip: text; /* Préfixe webkit pour compatibilité */
+    background-clip: text; /* Applique le dégradé au texte */
+    -webkit-text-fill-color: transparent; /* Webkit pour rendre le texte transparent */
+    color: transparent; /* Rend le texte transparent pour le dégradé */
+    margin-left: 0.25rem; /* Petite marge à gauche */
+    transition: all 0.3s ease-in-out; /* Transition pour survol */
+}
+
+/* Effet au survol pour le premier texte */
+.custom-container:hover .custom-text-1 {
+    -webkit-text-fill-color: #b45309; /* Couleur ambrée foncée au survol */
+    color: #b45309; /* Couleur ambrée foncée au survol */
+}
+
+/* Effet au survol pour le second texte */
+.custom-container:hover .custom-text-2 {
+    -webkit-text-fill-color: #eab308; /* Couleur jaune clair au survol */
+    color: #eab308; /* Couleur jaune clair au survol */
+}
+
+/* Style pour l'image du logo */
+#logoimg {
+    width: 55px; /* Taille fixe pour le logo */
+    height: 55px; /* Hauteur fixe */
+    object-fit: contain; /* Ajuste l'image sans déformation */
+}
+
+/* Style pour les paragraphes dans l'en-tête */
+header p {
+    color: var(--text-dark); /* Texte sombre pour contraste */
+    font-size: 1.3rem; /* Taille de police légèrement plus grande */
+    font-weight: 700; /* Gras pour importance */
+    letter-spacing: -0.5px; /* Resserre légèrement les lettres */
+}
+
+/* ===== NAVIGATION ===== */
+/* Style pour le menu de navigation principal */
+.menu {
+    display: flex; /* Affiche les liens en ligne */
+    gap: 2rem; /* Espacement entre les liens */
+}
+
+/* Style pour les liens du menu */
+.menu a {
+    color: var(--text-medium); /* Couleur grise pour neutralité */
+    text-decoration: none; /* Supprime le soulignement */
+    font-size: 0.95rem; /* Taille de police légèrement réduite */
+    font-weight: 500; /* Poids moyen pour lisibilité */
+    position: relative; /* Permet de positionner l'effet de survol */
+    transition: var(--transition); /* Transition fluide pour changements */
+}
+
+/* Effet au survol des liens du menu */
+.menu a:hover {
+    color: var(--primary); /* Passe au vert principal */
+}
+
+/* Pseudo-élément pour l'effet de soulignement au survol */
+.menu a::after {
+    content: ''; /* Crée un élément vide */
+    position: absolute; /* Positionnement relatif au lien */
+    bottom: -5px; /* Sous le lien */
+    left: 0; /* Aligné à gauche */
+    width: 0; /* Largeur initiale nulle */
+    height: 2px; /* Hauteur de la ligne */
+    background-color: var(--primary); /* Couleur verte */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Étend la ligne au survol */
+.menu a:hover::after {
+    width: 100%; /* Ligne complète */
+}
+
+/* Style pour le menu déroulant */
+.dropdown {
+    position: relative; /* Permet de positionner le contenu déroulant */
+}
+
+/* Style pour le bouton du menu déroulant */
+.dropdown-btn {
+    color: var(--text-medium); /* Couleur grise */
+    cursor: pointer; /* Curseur indiquant interactivité */
+    font-size: 0.95rem; /* Taille de police réduite */
+    font-weight: 500; /* Poids moyen */
+    transition: var(--transition); /* Transition fluide */
+    display: flex; /* Alignement flexible */
+    align-items: center; /* Centre verticalement */
+    gap: 5px; /* Espacement entre texte et icône */
+}
+
+/* Ajoute une flèche au bouton déroulant */
+.dropdown-btn::after {
+    content: '▾'; /* Symbole de flèche vers le bas */
+    font-size: 0.8rem; /* Taille réduite */
+}
+
+/* Effet au survol du bouton déroulant */
+.dropdown-btn:hover {
+    color: var(--primary); /* Passe au vert */
+}
+
+/* Style pour le contenu du menu déroulant */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* juste en dessous du bouton */
+    left: 0;
+    background-color: var(--card-bg);
+    min-width: 220px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Style pour les liens du menu déroulant */
+.dropdown-content a {
+    color: var(--text-medium); /* Couleur grise */
+    padding: 0.9rem 1.5rem; /* Espacement interne */
+    text-decoration: none; /* Sans soulignement */
+    display: block; /* Occupe toute la largeur */
+    transition: var(--transition); /* Transition fluide */
+    font-weight: 500; /* Poids moyen */
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+/* Effet au survol des liens du menu déroulant */
+.dropdown-content a:hover {
+    background-color: var(--border-light); /* Fond gris clair */
+    color: var(--primary); /* Texte vert */
+    padding-left: 1.8rem; /* Décalage à gauche pour effet visuel */
+}
+
+/* Affiche le menu déroulant au survol */
+.dropdown:hover .dropdown-content {
+    display: block; /* Rend visible */
+    animation: fadeInDown 0.3s ease forwards; /* Animation d'apparition */
+}
+
+/* Animation pour l'apparition du menu déroulant */
+@keyframes fadeInDown {
+    from {
+        opacity: 0; /* Débute invisible */
+        transform: translateY(-10px); /* Décalé vers le haut */
+    }
+    to {
+        opacity: 1; /* Complètement visible */
+        transform: translateY(0); /* Position finale */
+    }
+}
+
+/* ===== BARRE DE RECHERCHE ===== */
+/* Style pour la barre de recherche */
+.search-container {
+    display: flex; /* Alignement en ligne */
+    align-items: center; /* Centre verticalement */
+    background-color: var(--border-light); /* Fond gris clair */
+    border-radius: 30px; /* Coins très arrondis */
+    padding: 0.5rem 1rem; /* Espacement interne */
+    max-width: 300px; /* Largeur maximale */
+    width: 100%; /* Pleine largeur dans son conteneur */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Effet au focus de la barre de recherche */
+.search-container:focus-within {
+    box-shadow: 0 0 0 2px var(--primary-light); /* Bordure verte claire */
+}
+
+/* Style pour l'input de recherche */
+.search-container input {
+    border: none; /* Sans bordure */
+    background: none; /* Sans fond */
+    width: 100%; /* Pleine largeur */
+    padding: 0.4rem; /* Espacement interne */
+    outline: none; /* Supprime le contour par défaut */
+    color: var(--text-dark); /* Texte sombre */
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+/* Style pour le placeholder de l'input */
+.search-container input::placeholder {
+    color: var(--text-medium); /* Couleur grise */
+    opacity: 0.7; /* Légèrement transparent */
+}
+
+/* Style pour l'icône de recherche */
+.search-container .Icon {
+    width: 18px; /* Taille réduite */
+    height: 18px; /* Hauteur fixe */
+    opacity: 0.6; /* Légèrement transparent */
+    transition: var(--transition); /* Transition fluide */
+}
+
+/* Augmente l'opacité de l'icône au focus */
+.search-container:focus-within .Icon {
+    opacity: 1; /* Pleinement visible */
+}
+
+/* Style pour les liens d'authentification */
+header p a {
+    color: var(--text-medium); /* Couleur grise */
+    text-decoration: none; /* Sans soulignement */
+    transition: var(--transition); /* Transition fluide */
+    font-weight: 500; /* Poids moyen */
+    font-size: 0.9rem; /* Taille réduite */
+}
+
+/* Effet au survol des liens d'authentification */
+header p a:hover {
+    color: var(--primary); /* Passe au vert */
+}
+
+/* ===== SECTION HERO ===== */
+/* Style pour la section Hero */
+.hero-section {
+    position: relative; /* Positionnement relatif pour superpositions */
+    background: linear-gradient(to right, #1a3c34, #2f855a); /* Dégradé vert foncé */
+    overflow: hidden; /* Cache les débordements */
+}
+
+/* Style pour l'image de fond de la section Hero */
+.hero-section .bg-image {
+    position: absolute; /* Positionnement absolu */
+    inset: 0; /* Couvre toute la section */
+    z-index: 0; /* En arrière-plan */
+}
+
+/* Style pour l'image de fond */
+.hero-section .bg-image img {
+    width: 100%; /* Pleine largeur */
+    height: 100%; /* Pleine hauteur */
+    object-fit: cover; /* Couvre sans déformation */
+    opacity: 0.4; /* Légèrement transparent */
+}
+
+/* Style pour le conteneur principal de la section Hero */
+.hero-section .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré horizontalement */
+    padding: 4rem 1rem; /* Espacement généreux */
+    position: relative; /* Positionnement relatif */
+    z-index: 10; /* Au-dessus de l'image de fond */
+}
+
+/* Style pour le titre principal de la section Hero */
+.hero-section h1 {
+    font-size: 3rem; /* Grande taille pour impact */
+    font-weight: 700; /* Gras pour importance */
+    color: #fff; /* Texte blanc pour contraste */
+    margin-bottom: 1.5rem; /* Espacement en bas */
+    line-height: 1.2; /* Hauteur de ligne réduite */
+}
+
+/* Style pour le texte de description */
+.hero-section p {
+    font-size: 1.125rem; /* Taille légèrement plus grande */
+    color: #e5e7eb; /* Gris clair pour contraste */
+    margin-bottom: 2rem; /* Espacement en bas */
+    max-width: 600px; /* Limite la largeur pour lisibilité */
+}
+
+/* ===== PANIER ===== */
+.panier-quantite {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #3b8a3f;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 20px;
+    padding: 0 2px;
+}
+
+/* Pour que le positionnement absolu fonctionne */
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+/* Animation au survol */
+.cart-icon:hover .panier-quantite {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* Masquer le badge si la quantité est 0 */
+.panier-quantite:empty,
+.panier-quantite[data-count="0"] {
+    display: none;
+}
+
+/* ===== BOUTONS ===== */
+/* Style pour les boutons de la section Hero */
+.hero-section .btn {
+    display: inline-block; /* Affiche en ligne */
+    font-weight: 600; /* Poids moyen-gras */
+    padding: 0.75rem 1.5rem; /* Espacement interne */
+    border-radius: 0.5rem; /* Coins arrondis */
+    transition: background-color 0.3s, transform 0.2s; /* Transitions fluides */
+    text-decoration: none; /* Sans soulignement */
+}
+
+/* Style pour le bouton principal */
+.hero-section .btn-primary {
+    background-color: #f59e0b; /* Couleur ambrée */
+    color: #fff; /* Texte blanc */
+}
+
+/* Effet au survol du bouton principal */
+.hero-section .btn-primary:hover {
+    background-color: #d97706; /* Ambré plus foncé */
+    transform: translateY(-2px); /* Léger soulèvement */
+}
+
+/* Style pour le bouton secondaire */
+.hero-section .btn-secondary {
+    background-color: #fff; /* Fond blanc */
+    color: #15803d; /* Texte vert foncé */
+}
+
+/* Effet au survol du bouton secondaire */
+.hero-section .btn-secondary:hover {
+    background-color: #f3f4f6; /* Gris très clair */
+    transform: translateY(-2px); /* Léger soulèvement */
+}
+
+.btn-connexion {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-connexion:hover {
+    background-color: var(--primary-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+}
+
+.btn-connexion:active {
+    background-color: var(--primary-dark);
+}
+
+/* ===== SECTIONS DE SERVICE ===== */
+/* Style pour la section des points forts des services */
+.service-highlights {
+    background-color: rgba(255, 255, 255, 0.9); /* Fond blanc semi-transparent */
+    padding: 2rem 0; /* Espacement vertical */
+    position: relative; /* Positionnement relatif */
+    z-index: 10; /* Au-dessus de l'arrière-plan */
+}
+
+/* Style pour le conteneur des points forts */
+.service-highlights .container {
+    max-width: 1200px; /* Largeur maximale */
+    margin: 0 auto; /* Centré */
+    padding: 0 1rem; /* Espacement horizontal */
+}
+
+/* Style pour la grille des services */
+.service-highlights .grid {
+    display: grid; /* Disposition en grille */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colonnes responsives */
+    gap: 1.5rem; /* Espacement entre éléments */
+}
+
+/* ===== SECTION FAVORIS ===== */
+/* Favorites Section */
+.favorites-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent) 0%, #e67e22 100%);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    color: var(--text-medium);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ===== ALERTES ===== */
+/* Alerts */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, var(--primary-light) 0%, #c3e6cb 100%);
+    color: var(--primary-dark);
+    border: 1px solid var(--primary-light);
+}
+
+.alert-error {
+    background: linear-gradient(135deg, #f8d7da 0%, #f1b0b7 100%);
+    color: #721c24;
+    border: 1px solid #f1b0b7;
+}
+
+/* ===== GRILLE DE PRODUITS ===== */
+/* Products Grid */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    position: relative;
+    border: 2px solid transparent;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent);
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.95); /* Blanc par défaut */
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #e11d48; /* Cœur rouge si NON favori */
+    font-size: 18px;
+}
+
+.favorite-btn:hover {
+    background: #f3f4f6;
+    transform: scale(1.1);
+}
+
+/* Si favori => fond rouge (ou autre), icône blanche */
+.favorite-btn.favorited {
+    background: #e11d48; /* Rouge vif */
+    color: #ffffff;      /* Icône blanche */
+}
+
+.favorite-btn.favorited:hover {
+    background: #be123c; /* Rouge foncé au survol */
+}
+
+
+
+.product-content {
+    padding: 1.5rem;
+}
+
+.product-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+
+.product-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 70px;
+    padding: 0.5rem;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.add-to-cart-btn {
+    flex: 1;
+    background: linear-gradient(135deg, var(--accent) 0%, #e67e22 100%);
+    color: var(--text-light);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.add-to-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 193, 7, 0.3);
+}
+
+.out-of-stock {
+    background: #e74c3c;
+    color: var(--text-light);
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===== ÉTAT VIDE ===== */
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.empty-description {
+    color: var(--text-medium);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.continue-shopping-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.continue-shopping-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* ===== MENU UTILISATEUR ===== */
+
+#userMenu {
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    z-index: 50;
+    margin-top: 160%;
+    position: absolute;
+    right: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    transform-origin: top right;
+    animation: fadeIn 0.2s ease-out;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    padding: 10%;
+    gap: 20PC;
+}
+
+.userMenu.hidden {
+    display: none;
+}
+
+/* Conteneur d'info utilisateur */
+.userMenu-info {
+    padding: 20px 24px; /* plus de padding */
+    font-size: 15px;
+    color: var(--text-medium, #555);
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border-light, #ddd);
+}
+
+/* Style du paragraphe */
+.userMenu-info p {
+    margin-bottom: 14px;
+}
+
+/* Lien profil */
+.userMenu-info a {
+    display: inline-block;
+    color: var(--primary, #2563eb);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.userMenu-info a:hover {
+    color: var(--primary-dark, #1e40af);
+    text-decoration: underline;
+}
+
+
+/* Footer */
+ .footer {
+            background: linear-gradient(135deg, var(--text-dark), var(--primary-dark));
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--primary-light);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-light);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background: var(--primary-light);
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid #424242;
+    color: var(--text-medium);
+}
+
+
+/* Ajustements responsives pour le pied de page */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        text-align: center; /* Texte centré */
+    }
+
+    .social-links {
+        justify-content: center; /* Centre les icônes */
+    }
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        position:static;
+    }
+
+    .menu {
+        gap: 1rem;
+    }
+
+    .login-container {
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+
+    .login-title {
+        font-size: 24px;
+    }
+
+    .form-input {
+        padding: 14px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    #logoCustom-container {
+        display: flex;
+       justify-content: center;
+
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+    #userMenu {
+        margin-top: 160px;
+        width: 200px;
+       }
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+    padding: 1.2rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+    gap: 1%;
+}
+
+#logoCustom-container {
+    display: flex;
+    align-items: center;
+}
+
+.custom-container {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-text-1 {
+    background: linear-gradient(to right, #f59e0b, #d97706, #b45309);
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-text-2 {
+    background: linear-gradient(to right, #d97706, #fbbf24, #f59e0b);
+    background-clip: text;
+    color: transparent;
+    margin-left: 0.25rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-container:hover .custom-text-1 {
+    color: #b45309;
+}
+
+.custom-container:hover .custom-text-2 {
+    color: #eab308;
+}
+
+#logoimg {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+header p {
+    color: var(--text-dark);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.menu {
+    display: flex;
+    gap: 70px;
+}
+
+.menu a {
+    color: var(--text-medium);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    transition: var(--transition);
+}
+
+.menu a:hover {
+    color: var(--primary);
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    color: var(--text-medium);
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dropdown-btn::after {
+    content: '▾';
+    font-size: 0.8rem;
+}
+
+.dropdown-btn:hover {
+    color: var(--primary);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--card-bg);
+    min-width: 220px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: var(--text-medium);
+    padding: 0.9rem 1.5rem;
+    text-decoration: none;
+    display: block;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--border-light);
+    color: var(--primary);
+    padding-left: 1.8rem;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    animation: fadeInDown 0.3s ease forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header p a {
+    color: var(--text-medium);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+header p a:hover {
+    color: var(--primary);
+}
+.btn-connexion {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-connexion:hover {
+    background-color: var(--primary-light);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: var(--text-light);
+}
+
+.btn-connexion:active {
+    background-color: var(--primary-dark);
+}
