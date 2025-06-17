@@ -33,18 +33,23 @@ class AdminDashboardController {
         $commandesByStatus = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Liste des commandes
-        $query = "SELECT c.idCommande, c.dateCommande, c.statut, c.adresseLivraison, u.emailUtil 
-                  FROM commande c 
-                  JOIN utilisateur u ON c.idUtilisateur = u.idUtilisateur";
-        $stmt = $this->pdo->query($query);
-        $commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+       // Liste des commandes avec les produits associés
+$query = "SELECT c.idCommande, c.dateCommande, c.statut, c.adresseLivraison, u.emailUtil, 
+GROUP_CONCAT(p.nomProduit SEPARATOR ', ') as produits, 
+GROUP_CONCAT(cp.idProduit SEPARATOR ', ') as produit_ids
+FROM commande c 
+JOIN utilisateur u ON c.idUtilisateur = u.idUtilisateur
+LEFT JOIN Commande_Produit cp ON c.idCommande = cp.idCommande
+LEFT JOIN produit p ON cp.idProduit = p.idProduit
+GROUP BY c.idCommande, c.dateCommande, c.statut, c.adresseLivraison, u.emailUtil";
+$stmt = $this->pdo->query($query);
+$commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // Produits les plus/moins demandés (basé sur panier_produit)
-        $query = "SELECT p.nomProduit, p.idProduit, SUM(pp.QTE) as totalQte 
-                  FROM produit p 
-                  LEFT JOIN panier_produit pp ON p.idProduit = pp.idProduit 
-                  GROUP BY p.idProduit 
-                  ORDER BY totalQte DESC";
+        $query = "SELECT p.nomProduit, p.idProduit, COALESCE(SUM(cp.quantite), 0) as totalQte
+FROM produit p
+LEFT JOIN Commande_Produit cp ON p.idProduit = cp.idProduit
+GROUP BY p.idProduit, p.nomProduit
+ORDER BY totalQte DESC;";
         $stmt = $this->pdo->query($query);
         $produitsDemande = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
