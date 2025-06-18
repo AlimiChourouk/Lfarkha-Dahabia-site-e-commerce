@@ -712,3 +712,24 @@ nav {
         box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 
 }
+@media screen and (max-width: 768px) {
+    header {
+        text-align: center;
+    }
+
+    #logoCustom-container, nav {
+        display: block;
+        margin: 0 auto 15px auto;
+        vertical-align: none;
+    }
+
+    nav {
+        margin-left: 0;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.2rem;
+    }
+}
