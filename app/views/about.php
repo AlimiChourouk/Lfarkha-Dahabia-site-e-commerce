@@ -87,21 +87,21 @@
                 <div class="valeurs-section">
                     <div class="valeur-card">
     <h4 class="valeur-title">
-        <i class="fas fa-leaf valeur-icon"></i> Respect de la Nature
+        <i class="fas fa-leaf valeur-icon"></i> <br> Respect de la Nature
     </h4>
     <p>Nous nous engageons à utiliser des méthodes d'élevage durables et respectueuses de l'environnement. Nos pratiques préservent la biodiversité et maintiennent l'équilibre écologique.</p>
 </div>
 
 <div class="valeur-card">
     <h4 class="valeur-title">
-        <i class="fas fa-drumstick-bite valeur-icon"></i> Bien-être Animal
+        <i class="fas fa-drumstick-bite valeur-icon"></i> <br> Bien-être Animal
     </h4>
     <p>Nos volailles sont élevées dans des conditions optimales, avec accès à des espaces extérieurs naturels. Elles bénéficient d'une alimentation naturelle et de soins attentifs.</p>
 </div>
 
 <div class="valeur-card">
     <h4 class="valeur-title">
-        <i class="fas fa-star valeur-icon"></i> Excellence
+        <i class="fas fa-star valeur-icon"></i> <br> Excellence
     </h4>
     <p>Nous nous efforçons constamment d'améliorer nos méthodes d'élevage et la qualité de nos produits. Notre objectif est de toujours offrir le meilleur à nos clients.</p>
 </div>
