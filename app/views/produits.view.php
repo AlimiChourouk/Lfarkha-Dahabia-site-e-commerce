@@ -17,6 +17,7 @@
         <nav class="dropdown">
     <p class="dropdown-btn">Catégorie</p>
     <div class="dropdown-content">
+        <a href="?rout=produits">Tous</a>
         <a href="?rout=produits&categorie=Poules">Poules</a>
         <a href="?rout=produits&categorie=Coqs">Coqs</a>
         <a href="?rout=produits&categorie=Poussins">Poussins</a>
