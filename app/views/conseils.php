@@ -3,15 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap"rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="/Lfarkha-Dahabia-site-e-commerce/public/css/conseils.css?v=<?= time(); ?>">
     <title>Conseils Projet Avicole</title>
-
 </head>
 <body>
 <header>
@@ -223,5 +219,8 @@
             <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
         </div>
     </footer>
+    
+          <script src="/Lfarkha-Dahabia-site-e-commerce/public/javaScripte.js?v=<?= time(); ?>"></script>
+
 </body>
 </html>
