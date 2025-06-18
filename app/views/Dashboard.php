@@ -56,7 +56,7 @@
 
                     <!-- Bouton Hamburger pour mobile avec effet de verre -->
                     <div class="md:hidden flex items-center">
-                        <button id="menu-toggle" class="menu-toggle-glass text-white focus:outline-none" aria-label="Ouvrir le menu">
+                        <button id="menu-toggle" class="menu-toggle-glass text-black focus:outline-none" aria-label="Ouvrir le menu">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
                     </div>
