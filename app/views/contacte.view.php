@@ -49,9 +49,10 @@
         <a href="?rout=dashboard" class="block text-blue-600 hover:underline"> Mon Profil</a>
             </div>
     <div class="border-t px-4 py-2">
-        <a href="deconnexion.php" class="block text-red-600 hover:text-red-800">Déconnexion</a>
+        <a href="?rout=Deconnexion" class="block text-red-600 hover:text-red-800">Déconnexion</a>
     </div>
 </div>
+
 
             <?php else: ?>
                 <a href="?rout=connexion" class="btn-connexion">Connexion</a>
@@ -119,6 +120,57 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+               <div id="logoCustom-container">
+            <img id="logoimg" src="../public/img/logo.png" alt="logo" class="responsive-image" loading="lazy">
+            <div class="custom-container">
+                <span class="custom-text-1">Lfarkha</span>
+                <span class="custom-text-2">Dahabia</span>
+            </div>
+        </div>
+                <p>Votre partenaire de confiance pour des produits avicoles 100% naturels et de qualité supérieure.</p>
+                <div class="mt-4">
+                    <span class="text-sm bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                        <i class="fas fa-certificate mr-1"></i>Certifié Bio
+                    </span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-link mr-2"></i>Liens rapides</h3>
+                <ul>
+                    <li><a href="index.php"><i class="fas fa-home mr-2"></i>Accueil</a></li>
+                    <li><a href="?rout=produits"><i class="fas fa-leaf mr-2"></i>Nos Produits</a></li>
+                    <li><a href="?rout=panier"><i class="fas fa-shopping-cart mr-2"></i>Panier</a></li>
+                    <li><a href="?rout=favoris"><i class="fas fa-heart mr-2"></i>Favoris</a></li>
+                    <li><a href="?rout=connexion"><i class="fas fa-sign-in-alt mr-2"></i>Connexion</a></li>
+                    <li><a href="?rout=inscription"><i class="fas fa-user-plus mr-2"></i>Inscription</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-phone mr-2"></i>Contactez-nous</h3>
+                <p><i class="fas fa-envelope mr-2"></i>Email : <a href="mailto:contact@lfarkhadahabia.com">contact@lfarkhadahabia.com</a></p>
+                <p><i class="fas fa-phone mr-2"></i>Téléphone : +212 123 456 789</p>
+                <p><i class="fas fa-clock mr-2"></i>Lun-Ven : 9h-18h</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3><i class="fas fa-share-alt mr-2"></i>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© <?= date('Y') ?> Lfarkha Dahabia. Tous droits réservés. </p>
+        </div>
+    </footer>
     <script src="/Lfarkha-Dahabia-site-e-commerce/public/javaScripte.js"></script>
 </body>
 </html>
