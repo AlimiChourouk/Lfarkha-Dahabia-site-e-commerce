@@ -13,37 +13,34 @@ require_once __DIR__ . '/../../config/db.php';
 </head>
 <body>
 <header>
-<nav class="menu">
+        <nav class="menu">
             <a href="index.php">Accueil</a>
             <a href="?rout=produits">Produit</a>
             <a href="?rout=conseils">Conseils</a>
         </nav>
         <div id="logoCustom-container">
-            <img id="logoimg" src="img/logo.png" alt="logo">
+            <img id="logoimg" src="../public/img/logo.png" alt="logo" class="responsive-image" loading="lazy">
             <div class="custom-container">
                 <span class="custom-text-1">Lfarkha</span>
                 <span class="custom-text-2">Dahabia</span>
             </div>
         </div>
         <div class="menu">
-           <a href="index.php?rout=about">À propos</a>
-           <a href="?rout=contact">contact</a>
+            <a href="index.php?rout=about">À propos</a>
+            <a href="?rout=contact">contact</a>
         </div>
         <div class="relative inline-block text-left" style="display: flex; align-items: center; gap: 15px;">
             <a href="?rout=panier" class="cart-icon" title="Voir le panier" style="color: #333; font-size: 22px;">
                 <i class="fas fa-shopping-cart"></i>
-                <span class="panier-quantite"><?= htmlspecialchars($totalQte) ?></span>
             </a>
             <a href="?rout=favoris" class="heart-outline-btn" title="Mes favoris" style="color: #333; font-size: 22px;">
                 <i class="far fa-heart"></i>
             </a>
             <?php if (isset($_SESSION['idUtilisateur']) && !empty($_SESSION['idUtilisateur'])): ?>
-   <button onclick="toggleUserMenu()" class="user-button" type="button">
-    <i class="fas fa-user icon-user"></i>
-</button>
-
-
-   <div id="userMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <button onclick="toggleUserMenu()" class="text-gray-600 hover:text-black focus:outline-none" style="background: none; border: none;">
+                    <i class="fas fa-user text-2xl"></i>
+                </button>
+                <div id="userMenu" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
     <div class="px-4 py-3 text-sm text-gray-700 space-y-2">
         <p><strong>Nom :</strong> <?= htmlspecialchars($_SESSION['nomUtil'] ?? 'Inconnu') ?></p>
         <a href="?rout=dashboard" class="block text-blue-600 hover:underline"> Mon Profil</a>
@@ -52,8 +49,6 @@ require_once __DIR__ . '/../../config/db.php';
         <a href="?rout=Deconnexion" class="block text-red-600 hover:text-red-800">Déconnexion</a>
     </div>
 </div>
-
-
 
             <?php else: ?>
                 <a href="?rout=connexion" class="btn-connexion">Connexion</a>
@@ -88,7 +83,7 @@ require_once __DIR__ . '/../../config/db.php';
                 <i class="fas fa-heart empty-icon"></i>
                 <h3 class="empty-title">Aucun produit dans vos favoris</h3>
                 <p class="empty-description">Ajoutez des produits à vos favoris pour les retrouver ici.</p>
-                <a href="index.php" class="continue-shopping-btn">
+                <a href="?rout=produits" class="continue-shopping-btn">
                     <i class="fas fa-shopping-bag"></i> Continuer mes achats
                 </a>
             </div>
@@ -182,39 +177,8 @@ require_once __DIR__ . '/../../config/db.php';
         </div>
     </footer>
 
-    <script>
-       function toggleUserMenu() {
-    const userMenu = document.getElementById('userMenu');
-    userMenu.classList.toggle('hidden');
-}
 
+              <script src="/Lfarkha-Dahabia-site-e-commerce/public/favoris.js?v=<?= time(); ?>"></script>
 
-        document.querySelectorAll('.favorite-btn').forEach(button => {
-            button.addEventListener('click', async function() {
-                const productId = this.dataset.productId;
-                const isFavorited = this.classList.contains('favorited');
-
-                try {
-                    const response = await fetch('index.php?rout=favoris/toggle', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: `idProduit=${productId}`
-                    });
-                    const result = await response.json();
-
-                    if (result.success) {
-                        this.classList.toggle('favorited');
-                        if (!isFavorited) {
-                            this.closest('.product-card').remove();
-                        }
-                    } else {
-                        alert(result.message || 'Erreur lors de la mise à jour des favoris.');
-                    }
-                } catch (error) {
-                    alert('Erreur réseau. Veuillez réessayer.');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
