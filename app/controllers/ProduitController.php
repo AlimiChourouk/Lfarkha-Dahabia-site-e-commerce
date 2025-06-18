@@ -62,7 +62,6 @@ class ProduitController {
     }
 
     public function index() {
-        // Cette méthode semble incorrecte car elle charge produit.view.php
         // Redirigeons vers la liste des produits (produits.php) à la place
         header("Location: index.php?rout=produits");
         exit();
